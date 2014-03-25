@@ -7,7 +7,7 @@
               android:layout_height="match_parent">
 
     <ImageView
-            android:id="@+id/logo"
+            android:id="@+id/img_logo"
             android:layout_marginTop="100dp"
             android:layout_gravity="center_horizontal"
             android:layout_width="150dp"
