@@ -10,17 +10,39 @@ public class User {
         return ID;
     }
 
-    public void setID(String ID) {
+    public User setID(String ID) {
         this.ID = ID;
+        return this;
     }
 
     public String getPassword() {
         return Password;
     }
 
-    public void setPassword(String password) {
+    public User setPassword(String password) {
         Password = password;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "ID='" + ID + '\'' +
+                ", Password='" + Password + '\'' +
+                ", ValidateCode='" + ValidateCode + '\'' +
+                '}';
     }
 
     private String Password;
+
+    private String ValidateCode;
+
+    public User setValidateCode(String validateCode) {
+        ValidateCode = validateCode;
+        return this;
+    }
+
+    public String getValidateCode() {
+        return ValidateCode;
+    }
 }

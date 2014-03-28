@@ -70,7 +70,7 @@ public class Test {
         Elements elements2 = element.getElementsByTag("tr");
         for (Element temp2 : elements2) {
             Elements elements3 = temp2.getElementsByTag("td");
-            BookEntity entity = new test().new BookEntity()
+            BookEntity entity = new Test().new BookEntity()
                     .setIsFullData(elements3.get(0).text())
                     .setData2Return(elements3.get(1).text())
                     .setName(elements3.get(2).text())
@@ -93,7 +93,6 @@ public class Test {
     /**
      * 图书馆登陆
      *
-     * @param context
      * @return 返回登陆后的界面Html代码
      * @throws ClientProtocolException
      * @throws IOException

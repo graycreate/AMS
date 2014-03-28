@@ -8,4 +8,8 @@ public interface Constants {
     String PSW = "password";
     String LOGIN_DATA = "login_data_sharedpreference";
     String UNLOGIN = "";
+
+    String VALIDATE_CODE_URL ="http://211.84.112.49/lyit/sys/ValidateCode.aspx";
+
+    String LOGIN_URL = "http://211.84.112.49/lyit/_data/index_LOGIN.aspx";
 }

@@ -4,4 +4,5 @@
     <string name="work_id">工号:</string>
     <string name="password">密码:</string>
     <string name="login">登录</string>
+    <string name="validatecode">验证码:</string>
 </resources>
