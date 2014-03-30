@@ -5,10 +5,23 @@
               android:layout_height="fill_parent"
         >
 
+<TextView
+        android:clickable="true"
+        android:id="@+id/self_info"
+        android:drawableTop="@drawable/ic_launcher"
+        android:onClick="onClick_getSelfInfo"
+        android:layout_gravity="center"
+        android:text="@string/self_info"
+        android:textColor="@color/selecor_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
     <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Hello World, MainActivity"
-            />
+            android:id="@+id/tv_teacher_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </ScrollView>
 </LinearLayout>
 

@@ -14,9 +14,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.*;
 import me.ghui.AMS.R;
 import me.ghui.AMS.domain.User;
 import me.ghui.AMS.net.NetUtils;
@@ -35,6 +33,7 @@ public class SplashActivity extends Activity {
     EditText et_work_id;
     EditText et_password;
     EditText et_validate_code;
+    ProgressBar progressBar;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +47,10 @@ public class SplashActivity extends Activity {
         logo = (ImageView) findViewById(R.id.img_logo);
         img_validatecode = (ImageView) findViewById(R.id.img_validatecode);
         et_work_id = (EditText) findViewById(R.id.et_work_id);
+        et_work_id.setSelection(et_work_id.length());
         et_password = (EditText) findViewById(R.id.et_password);
         et_validate_code = (EditText) findViewById(R.id.et_validate_code);
+        progressBar = (ProgressBar) findViewById(R.id.pb_validate);
         StringHelper.toUpcase(et_validate_code);
         showInvalidateCode();
     }
@@ -64,16 +65,12 @@ public class SplashActivity extends Activity {
 
     public void login(View view) {
         //start animation...
+        showAnimation();
         User user = new User();
         user.setID(et_work_id.getText().toString())
                 .setPassword(et_password.getText().toString()).setValidateCode(et_validate_code.getText().toString());
         Log.e("ghui", user.toString());
-                NetUtils.login(user);
-    }
-
-    public void getTeaInfo(View view) {
-        Log.e("ghui", "getTeaInfo,,,,,,");
-        NetUtils.getTeaInfo();
+        executeLogin(user);
     }
 
     private void showAnimation() {
@@ -93,6 +90,25 @@ public class SplashActivity extends Activity {
     }
 
 
+    private void executeLogin(final User user) {
+       new Thread(new Runnable() {
+           @Override
+           public void run() {
+              NetUtils.login(user);
+               img_validatecode.post(new Runnable() {
+                   @Override
+                   public void run() {
+                       Toast.makeText(SplashActivity.this,"login successfully!",Toast.LENGTH_SHORT).show();
+                       finish();
+                       startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                      overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+                   }
+               });
+           }
+       }).start();
+    }
+
+
     private void showInvalidateCode() {
         new Thread(new Runnable() {
             @Override
@@ -101,11 +117,12 @@ public class SplashActivity extends Activity {
                 img_validatecode.post(new Runnable() {
                     @Override
                     public void run() {
+                        progressBar.setVisibility(View.GONE);
+                        img_validatecode.setVisibility(View.VISIBLE);
                         img_validatecode.setImageBitmap(bitmap);
                     }
                 });
             }
         }).start();
-
     }
 }
