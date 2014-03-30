@@ -12,4 +12,5 @@ public interface Constants {
     String VALIDATE_CODE_URL ="http://211.84.112.49/lyit/sys/ValidateCode.aspx";
 
     String LOGIN_URL = "http://211.84.112.49/lyit/_data/index_LOGIN.aspx";
+    String TEACHER_INFO_URL = "http://211.84.112.49/lyit/jxzy/Tea_MyInfo_rpt.aspx";
 }

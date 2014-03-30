@@ -13,6 +13,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:src="@drawable/lit"
+            android:onClick="getTeaInfo"
             />
 
     <LinearLayout
@@ -56,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/validatecode"
                     android:textColorHint="@color/main_color"
-                    android:inputType="textPassword"
+                    android:inputType="textVisiblePassword"
                     />
             <ImageView
                     android:id="@+id/img_validatecode"

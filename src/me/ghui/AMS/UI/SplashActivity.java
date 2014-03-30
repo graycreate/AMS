@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.InputType;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -18,6 +21,7 @@ import me.ghui.AMS.R;
 import me.ghui.AMS.domain.User;
 import me.ghui.AMS.net.NetUtils;
 import me.ghui.AMS.utils.LoginDataHelper;
+import me.ghui.AMS.utils.StringHelper;
 
 import java.io.IOException;
 
@@ -46,8 +50,11 @@ public class SplashActivity extends Activity {
         et_work_id = (EditText) findViewById(R.id.et_work_id);
         et_password = (EditText) findViewById(R.id.et_password);
         et_validate_code = (EditText) findViewById(R.id.et_validate_code);
+        StringHelper.toUpcase(et_validate_code);
         showInvalidateCode();
     }
+
+
 
     private void initLogic() {
         if (!LoginDataHelper.hasLogin(this)) {
@@ -62,6 +69,11 @@ public class SplashActivity extends Activity {
                 .setPassword(et_password.getText().toString()).setValidateCode(et_validate_code.getText().toString());
         Log.e("ghui", user.toString());
                 NetUtils.login(user);
+    }
+
+    public void getTeaInfo(View view) {
+        Log.e("ghui", "getTeaInfo,,,,,,");
+        NetUtils.getTeaInfo();
     }
 
     private void showAnimation() {
@@ -79,6 +91,7 @@ public class SplashActivity extends Activity {
         set.setFillAfter(true);
         logo.startAnimation(set);
     }
+
 
     private void showInvalidateCode() {
         new Thread(new Runnable() {
