@@ -4,4 +4,19 @@
     <style name="Theme.Splash" parent="android:Theme.Holo.Light.NoActionBar.Fullscreen">
         <item name="android:windowIsTranslucent">true</item>
     </style>
+
+    <style name="GridView_TV">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textColor">@color/selecor_tv</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:background">@drawable/selecor_gridview</item>
+        <item name="android:padding">5dp</item>
+    </style>
+   <style name="gridview_root" >
+       <item name="android:layout_height">0dp</item>
+       <item name="android:layout_weight">1</item>
+   </style>
 </resources>

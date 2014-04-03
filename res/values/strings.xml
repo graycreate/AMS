@@ -7,4 +7,10 @@
     <string name="validatecode">验证码:</string>
     <string name="main_title">"教务管理系统(教师版)"</string>
     <string name="self_info">个人信息</string>
+    <string name="teaching_task">教学任务</string>
+    <string name="teaching_plan">教学安排</string>
+    <string name="student_mark">学生成绩</string>
+    <string name="others">其它</string>
+    <string name="community">论坛</string>
+    <string name="settings">设置</string>
 </resources>

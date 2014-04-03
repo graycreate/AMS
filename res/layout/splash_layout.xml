@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
                 android:textColorHint="@color/main_color"
-                android:inputType="textPassword"
+                android:inputType="numberPassword"
                 />
 
         <LinearLayout
