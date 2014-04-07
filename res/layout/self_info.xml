@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/tv_self_info_root"
               android:paddingLeft="15dp"
               android:paddingRight="15dp"
               android:orientation="vertical"
@@ -43,7 +44,6 @@
                 <TextView
                         android:id="@+id/name"
                         style="@style/content"
-                        android:text="李蒙"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -70,7 +70,6 @@
                 <TextView
                         android:id="@+id/sex"
                         style="@style/content"
-                        android:text="男"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -97,7 +96,6 @@
                 <TextView
                         android:id="@+id/birthday"
                         style="@style/content"
-                        android:text="1975-11-10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -124,7 +122,6 @@
                 <TextView
                         android:id="@+id/nation"
                         style="@style/content"
-                        android:text="满族"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -151,7 +148,6 @@
                 <TextView
                         android:id="@+id/id_card_no"
                         style="@style/content"
-                        android:text="412728198910153671"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -178,7 +174,6 @@
                 <TextView
                         android:id="@+id/native_placle"
                         style="@style/content"
-                        android:text="江苏省"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -218,7 +213,6 @@
                 <TextView
                         android:id="@+id/degree"
                         style="@style/content"
-                        android:text="硕士"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -245,7 +239,6 @@
                 <TextView
                         android:id="@+id/education"
                         style="@style/content"
-                        android:text="硕士研究生"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -285,7 +278,6 @@
                 <TextView
                         android:id="@+id/id"
                         style="@style/content"
-                        android:text="00000"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -312,7 +304,6 @@
                 <TextView
                         android:id="@+id/position"
                         style="@style/content"
-                        android:text="教师"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -339,7 +330,6 @@
                 <TextView
                         android:id="@+id/job_title"
                         style="@style/content"
-                        android:text="副教授"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -366,7 +356,6 @@
                 <TextView
                         android:id="@+id/join_lit_time"
                         style="@style/content"
-                        android:text="2007"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -393,7 +382,6 @@
                 <TextView
                         android:id="@+id/work_status"
                         style="@style/content"
-                        android:text="是"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -434,7 +422,6 @@
                 <TextView
                         android:id="@+id/cell_phone_no"
                         style="@style/content"
-                        android:text="135777777777"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -461,7 +448,6 @@
                 <TextView
                         android:id="@+id/phone"
                         style="@style/content"
-                        android:text="55222222"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -488,7 +474,6 @@
                 <TextView
                         android:id="@+id/email"
                         style="@style/content"
-                        android:text="xxx@xxx.com"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -520,7 +505,6 @@
                     android:background="@drawable/selector_content_root"
                     android:minHeight="50dp"
                     android:layout_marginBottom="20dp"
-                    android:text="你 地革左城工地左在甘工  城甘工地左地左 城工城工堶堶"
                     android:textColor="@color/selecor_tv"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"/>

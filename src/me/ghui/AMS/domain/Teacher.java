@@ -23,9 +23,6 @@ public class Teacher {
     private String cellPhoneNO;
     private String resume;
 
-    public Teacher() {
-    }
-
     @Override
     public String toString() {
         return "Teacher{" +
@@ -45,7 +42,21 @@ public class Teacher {
                 ", tel='" + tel + '\'' +
                 ", cellPhoneNO='" + cellPhoneNO + '\'' +
                 ", resume='" + resume + '\'' +
+                ", email='" + email + '\'' +
                 '}';
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    private String email;
+
+    public Teacher() {
     }
 
     public String getId() {
