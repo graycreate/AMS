@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:paddingLeft="15dp"
+              android:paddingRight="15dp"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <ScrollView
+            android:scrollbars="none"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+            <TextView
+                    style="@style/category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="基本信息"
+                    />
+
+            <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"
+                    />
+
+            <RelativeLayout
+                    style="@style/content_root"
+                    android:layout_width="fill_parent"
+                    >
+
+                <TextView
+                        style="@style/self_info_item"
+                        android:text="姓名"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:id="@+id/name"
+                        style="@style/content"
+                        android:text="李蒙"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <View
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@android:color/darker_gray"
+                        />
+            </RelativeLayout>
+
+            <RelativeLayout
+                    style="@style/content_root"
+                    android:layout_width="fill_parent"
+                    >
+
+                <TextView
+                        style="@style/self_info_item"
+                        android:text="性别"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:id="@+id/sex"
+                        style="@style/content"
+                        android:text="男"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <View
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@android:color/darker_gray"
+                        />
+            </RelativeLayout>
+
+            <RelativeLayout
+                    style="@style/content_root"
+                    android:layout_width="fill_parent"
+                    >
+
+                <TextView
+                        style="@style/self_info_item"
+                        android:text="出生日期"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:id="@+id/birthday"
+                        style="@style/content"
+                        android:text="1975-11-10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <View
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@android:color/darker_gray"
+                        />
+            </RelativeLayout>
+
+            <RelativeLayout
+                    style="@style/content_root"
+                    android:layout_width="fill_parent"
+                    >
+
+                <TextView
+                        style="@style/self_info_item"
+                        android:text="民族"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:id="@+id/nation"
+                        style="@style/content"
+                        android:text="满族"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <View
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@android:color/darker_gray"
+                        />
+            </RelativeLayout>
+
+            <RelativeLayout
+                    style="@style/content_root"
+                    android:layout_width="fill_parent"
+                    >
+
+                <TextView
+                        style="@style/self_info_item"
+                        android:text="身份证号"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:id="@+id/id_card_no"
+                        style="@style/content"
+                        android:text="412728198910153671"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <View
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@android:color/darker_gray"
+                        />
+            </RelativeLayout>
+
+            <RelativeLayout
+                    style="@style/content_root"
+                    android:layout_width="fill_parent"
+                    >
+
+                <TextView
+                        style="@style/self_info_item"
+                        android:text="籍贯"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:id="@+id/native_placle"
+                        style="@style/content"
+                        android:text="江苏省"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <View
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@android:color/darker_gray"
+                        />
+            </RelativeLayout>
+
+            <TextView
+                    style="@style/category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="教育信息"
+                    />
+
+            <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"
+                    />
+
+            <RelativeLayout
+                    style="@style/content_root"
+                    android:layout_width="fill_parent"
+                    >
+
+                <TextView
+                        style="@style/self_info_item"
+                        android:text="学位"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:id="@+id/degree"
+                        style="@style/content"
+                        android:text="硕士"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <View
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@android:color/darker_gray"
+                        />
+            </RelativeLayout>
+
+            <RelativeLayout
+                    style="@style/content_root"
+                    android:layout_width="fill_parent"
+                    >
+
+                <TextView
+                        style="@style/self_info_item"
+                        android:text="学历"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:id="@+id/education"
+                        style="@style/content"
+                        android:text="硕士研究生"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <View
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@android:color/darker_gray"
+                        />
+            </RelativeLayout>
+
+            <TextView
+                    style="@style/category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="工作信息"
+                    />
+
+            <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"
+                    />
+
+            <RelativeLayout
+                    style="@style/content_root"
+                    android:layout_width="fill_parent"
+                    >
+
+                <TextView
+                        style="@style/self_info_item"
+                        android:text="工号"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:id="@+id/id"
+                        style="@style/content"
+                        android:text="00000"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <View
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@android:color/darker_gray"
+                        />
+            </RelativeLayout>
+
+            <RelativeLayout
+                    style="@style/content_root"
+                    android:layout_width="fill_parent"
+                    >
+
+                <TextView
+                        style="@style/self_info_item"
+                        android:text="岗位"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:id="@+id/position"
+                        style="@style/content"
+                        android:text="教师"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <View
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@android:color/darker_gray"
+                        />
+            </RelativeLayout>
+
+            <RelativeLayout
+                    style="@style/content_root"
+                    android:layout_width="fill_parent"
+                    >
+
+                <TextView
+                        style="@style/self_info_item"
+                        android:text="职称"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:id="@+id/job_title"
+                        style="@style/content"
+                        android:text="副教授"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <View
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@android:color/darker_gray"
+                        />
+            </RelativeLayout>
+
+            <RelativeLayout
+                    style="@style/content_root"
+                    android:layout_width="fill_parent"
+                    >
+
+                <TextView
+                        style="@style/self_info_item"
+                        android:text="入校时间"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:id="@+id/join_lit_time"
+                        style="@style/content"
+                        android:text="2007"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <View
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@android:color/darker_gray"
+                        />
+            </RelativeLayout>
+
+            <RelativeLayout
+                    style="@style/content_root"
+                    android:layout_width="fill_parent"
+                    >
+
+                <TextView
+                        style="@style/self_info_item"
+                        android:text="是否在岗"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:id="@+id/work_status"
+                        style="@style/content"
+                        android:text="是"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <View
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@android:color/darker_gray"
+                        />
+            </RelativeLayout>
+
+            <TextView
+
+                    style="@style/category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="联系方式"
+                    />
+
+            <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"
+                    />
+
+            <RelativeLayout
+                    style="@style/content_root"
+                    android:layout_width="fill_parent"
+                    >
+
+                <TextView
+                        style="@style/self_info_item"
+                        android:text="手机"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:id="@+id/cell_phone_no"
+                        style="@style/content"
+                        android:text="135777777777"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <View
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@android:color/darker_gray"
+                        />
+            </RelativeLayout>
+
+            <RelativeLayout
+                    style="@style/content_root"
+                    android:layout_width="fill_parent"
+                    >
+
+                <TextView
+                        style="@style/self_info_item"
+                        android:text="电话"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:id="@+id/phone"
+                        style="@style/content"
+                        android:text="55222222"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <View
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@android:color/darker_gray"
+                        />
+            </RelativeLayout>
+
+            <RelativeLayout
+                    style="@style/content_root"
+                    android:layout_width="fill_parent"
+                    >
+
+                <TextView
+                        style="@style/self_info_item"
+                        android:text="Email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:id="@+id/email"
+                        style="@style/content"
+                        android:text="xxx@xxx.com"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <View
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@android:color/darker_gray"
+                        />
+            </RelativeLayout>
+
+            <TextView
+                    style="@style/category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="简历"
+                    />
+
+            <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"
+                    />
+
+            <TextView
+                    android:id="@+id/resume"
+                    android:clickable="true"
+                    android:background="@drawable/selector_content_root"
+                    android:minHeight="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="你 地革左城工地左在甘工  城甘工地左地左 城工城工堶堶"
+                    android:textColor="@color/selecor_tv"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

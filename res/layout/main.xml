@@ -16,6 +16,7 @@
                 android:text="@string/self_info"
                 android:layout_alignParentLeft="true"
                 android:drawableTop="@drawable/ic_launcher"
+                android:onClick="gotoSelfInfoActivity"
                 />
 
         <TextView

@@ -4,5 +4,6 @@
     <color name="main_color_bg">#fffff0</color>
     <color name="main_text_color">#fffff0</color>
     <color name="btn_pressed_color">#0B294D</color>
+    <color name="grey">#d4d4d4</color>
 
 </resources>

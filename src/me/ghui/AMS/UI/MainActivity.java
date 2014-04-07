@@ -1,15 +1,11 @@
 package me.ghui.AMS.UI;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 import me.ghui.AMS.R;
-import me.ghui.AMS.net.NetUtils;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 
 public class MainActivity extends Activity {
     @Override
@@ -21,5 +17,11 @@ public class MainActivity extends Activity {
 
     private void init() {
 
+    }
+//onClickLisener........................................................................................................
+    public void gotoSelfInfoActivity(View v) {
+        Log.e("ghui", ",,,goSelfInfoActivity!!!");
+        Intent intent = new Intent(this, SelfInfoActivity.class);
+        startActivity(intent);
     }
 }

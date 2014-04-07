@@ -21,6 +21,10 @@ public class Teacher {
     private String workStatus;
     private String tel;
     private String cellPhoneNO;
+    private String resume;
+
+    public Teacher() {
+    }
 
     @Override
     public String toString() {
@@ -172,5 +176,4 @@ public class Teacher {
         this.resume = resume;
     }
 
-    private String resume;
 }
