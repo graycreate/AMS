@@ -54,4 +54,14 @@
         <item name="android:clickable">true</item>
         <item name="android:layout_height">50dp</item>
     </style>
+
+    <style name="tv_extend">
+        <item name="android:textColor">@color/selecor_tv</item>
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/selecor_btn</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">60dp</item>
+        </style>
 </resources>
