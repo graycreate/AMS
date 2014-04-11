@@ -7,9 +7,13 @@ import me.ghui.AMS.R;
 /**
  * Created by ghui on 4/7/14.
  */
-public class TeachingTaskActivity extends Activity {
+public class TeachingTaskActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.teaching_task);
+    }
+
+    @Override
+    public int getLayoutResourceId() {
+        return R.layout.teaching_task;
     }
 }

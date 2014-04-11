@@ -4,5 +4,24 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-
+<LinearLayout
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+    <Spinner
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:id="@+id/spinner"
+            android:layout_gravity="center_horizontal"/>
+   <Button
+           android:text="检索"
+           android:textColor="@color/selecor_tv"
+           android:background="@drawable/selecor_btn"
+           android:layout_width="60dp"
+           android:layout_height="35dp"/>
+    </LinearLayout>
 </LinearLayout>

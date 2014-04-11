@@ -2,6 +2,7 @@ package me.ghui.AMS.UI;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -19,24 +20,23 @@ import org.jsoup.select.Elements;
 /**
  * Created by ghui on 4/7/14.
  */
-public class SelfInfoActivity extends Activity {
+public class SelfInfoActivity extends BaseActivity {
     private Teacher teacher;
-    private RelativeLayout layout;
+    private Handler handler;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.self_info);
         init();
     }
 
+    @Override
+    public int getLayoutResourceId() {
+        return R.layout.self_info;
+    }
+
     private void init() {
-        layout = new RelativeLayout(this);
-        ProgressBar progressBar = new ProgressBar(this, null, android.R.attr.progressBarStyleLarge);
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        layout.setGravity(Gravity.CENTER);
-        layout.addView(progressBar);
-        this.addContentView(layout, params);
+        handler = new Handler();
         getTeaInfo();
     }
 
@@ -64,6 +64,7 @@ public class SelfInfoActivity extends Activity {
     }
 
     private void getTeaInfo() {
+        showProgressBar();
         teacher = new Teacher();
         new Thread(new Runnable() {
             @Override
@@ -74,7 +75,7 @@ public class SelfInfoActivity extends Activity {
                 Log.e("ghui", "size:" + elements.size());
                 String content;
                 for (int i = 0; i < elements.size(); i++) {
-                    content =elements.get(i).text();
+                    content = elements.get(i).text();
                     switch (i) {
                         case 0:
                             teacher.setId(content);
@@ -132,13 +133,14 @@ public class SelfInfoActivity extends Activity {
                     }
                 }
                 Log.e("ghui", "Teacher: " + teacher);
-                layout.post(new Runnable() {
+                handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        layout.setVisibility(View.GONE);
+                        Log.e("ghui", "fillData");
                         fillData(teacher);
                     }
                 });
+                dismissProgressBar();
             }
         }).start();
     }

@@ -20,8 +20,8 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".UI.SelfInfoActivity"
                 android:parentActivityName=".UI.MainActivity"
+                android:name=".UI.SelfInfoActivity"
                 android:label="@string/self_info">
         </activity>
         <activity
