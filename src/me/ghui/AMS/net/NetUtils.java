@@ -103,8 +103,8 @@ public class NetUtils {
             doc = getConnection(url).get();
         } catch (IOException e) {
             e.printStackTrace();
-            doc = null;
             Log.e("ghui", "doc is null");
+            return getDataFromServer(url);
         }
         return doc;
     }
@@ -116,13 +116,13 @@ public class NetUtils {
             doc = getConnection(url).data(requestData).referrer(refer).post();
         } catch (IOException e) {
             e.printStackTrace();
-            doc = null;
+            return postDataToServer(url, requestData, refer);
         }
         return doc;
     }
 
     private static Connection getConnection(String url) {
-        return Jsoup.connect(url).cookie("ASP.NET_SessionId", SESSION_ID).timeout(5000);
+        return Jsoup.connect(url).cookie("ASP.NET_SessionId", SESSION_ID);
     }
 
     public static boolean isConnectioned(Document doc) {

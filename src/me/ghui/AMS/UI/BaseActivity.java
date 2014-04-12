@@ -1,9 +1,11 @@
 package me.ghui.AMS.UI;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -14,7 +16,7 @@ import android.widget.RelativeLayout;
 /**
  * Created by ghui on 4/9/14.
  */
-public abstract class BaseActivity extends Activity {
+public abstract class BaseActivity extends FragmentActivity {
     private RelativeLayout layout;
 
     public void onCreate(Bundle savedInstanceState) {
