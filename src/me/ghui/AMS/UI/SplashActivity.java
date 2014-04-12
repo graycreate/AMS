@@ -95,15 +95,16 @@ public class SplashActivity extends Activity {
            @Override
            public void run() {
               NetUtils.login(user);
+//               user.login();
                img_validatecode.post(new Runnable() {
                    @Override
                    public void run() {
                        Toast.makeText(SplashActivity.this,"login successfully!",Toast.LENGTH_SHORT).show();
                        logo.clearAnimation();
                        logo.setVisibility(View.GONE);
-                       finish();
                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                      overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+                       overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+                       finish();
                    }
                });
            }

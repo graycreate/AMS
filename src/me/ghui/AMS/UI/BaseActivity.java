@@ -20,12 +20,14 @@ public abstract class BaseActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResourceId());
+        initUI();
         init();
     }
 
     public abstract int getLayoutResourceId();
+    public abstract void init();
 
-    private void init() {
+    private void initUI() {
         ProgressBar progressBar = new ProgressBar(this, null, android.R.attr.progressBarStyleLarge);
         layout = new RelativeLayout(this);
         layout.setVisibility(View.GONE);

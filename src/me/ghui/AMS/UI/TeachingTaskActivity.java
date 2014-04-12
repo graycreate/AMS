@@ -16,4 +16,9 @@ public class TeachingTaskActivity extends BaseActivity {
     public int getLayoutResourceId() {
         return R.layout.teaching_task;
     }
+
+    @Override
+    public void init() {
+
+    }
 }

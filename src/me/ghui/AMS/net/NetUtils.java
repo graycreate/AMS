@@ -18,19 +18,22 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ghui on 3/28/14.
  */
 public class NetUtils {
     public static String SESSION_ID = "";
-    public static String TEA_INFO_HTML = "";
 
     public static Bitmap getValidateCode() {
         DefaultHttpClient httpClient = new DefaultHttpClient();
@@ -63,8 +66,8 @@ public class NetUtils {
         pairs.add(new BasicNameValuePair("cCode", user.getValidateCode()));
         pairs.add(new BasicNameValuePair("Sel_Type", "TEA"));
         pairs.add(new BasicNameValuePair("typeName", "教师教辅人员"));
-        pairs.add(new BasicNameValuePair("sbtState", ""));
-        pairs.add(new BasicNameValuePair("pcInfo", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36undefined5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36 SN:NULL"));
+//        pairs.add(new BasicNameValuePair("sbtState", ""));
+//        pairs.add(new BasicNameValuePair("pcInfo", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36undefined5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36 SN:NULL"));
         httpPost.setHeader("Cookie", "ASP.NET_SessionId=" + SESSION_ID);
 //                httpPost.setHeader("Content-Type","application/x-www-form-urlencoded");
 //                httpPost.setHeader("Host","211.84.112.49");
@@ -86,28 +89,47 @@ public class NetUtils {
         }
         if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
             Log.e("ghui", "login successfully!");
-            try {
-                Log.e("ghui", "content: " + EntityUtils.toString(response.getEntity()));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+//            try {
+////                Log.e("ghui", "content: " + EntityUtils.toString(response.getEntity()));
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
         }
     }
 
-    public static void getTeaInfo() {
-        DefaultHttpClient httpClient = new DefaultHttpClient();
-        HttpGet httpGet = new HttpGet(Constants.TEACHER_INFO_URL);
-        httpGet.setHeader("Cookie", "ASP.NET_SessionId=" + SESSION_ID);
+    public static Document getDataFromServer(String url) {
+        Document doc;
         try {
-            HttpResponse response = httpClient.execute(httpGet);
-            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-                TEA_INFO_HTML = EntityUtils.toString(response.getEntity());
-//                Log.e("ghui", "3. " + TEA_INFO_HTML);
-            }
+            doc = getConnection(url).get();
         } catch (IOException e) {
             e.printStackTrace();
+            doc = null;
+            Log.e("ghui", "doc is null");
         }
+        return doc;
     }
+
+    public static Document postDataToServer(String url, Map<String, String> requestData, String refer) {
+        //todo
+        Document doc;
+        try {
+            doc = getConnection(url).data(requestData).referrer(refer).post();
+        } catch (IOException e) {
+            e.printStackTrace();
+            doc = null;
+        }
+        return doc;
+    }
+
+    private static Connection getConnection(String url) {
+        return Jsoup.connect(url).cookie("ASP.NET_SessionId", SESSION_ID).timeout(5000);
+    }
+
+    public static boolean isConnectioned(Document doc) {
+        //todo
+        return !(doc == null);
+    }
+
 }
 
 

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import me.ghui.AMS.R;
 import me.ghui.AMS.domain.Teacher;
 import me.ghui.AMS.net.NetUtils;
+import me.ghui.AMS.utils.Constants;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -27,7 +28,6 @@ public class SelfInfoActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        init();
     }
 
     @Override
@@ -35,7 +35,8 @@ public class SelfInfoActivity extends BaseActivity {
         return R.layout.self_info;
     }
 
-    private void init() {
+    @Override
+    public void init() {
         handler = new Handler();
         getTeaInfo();
     }
@@ -69,8 +70,7 @@ public class SelfInfoActivity extends BaseActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                NetUtils.getTeaInfo();
-                Document document = Jsoup.parse(NetUtils.TEA_INFO_HTML);
+                Document document = NetUtils.getDataFromServer(Constants.TEACHER_INFO_URL);
                 Elements elements = document.select("td[class]");
                 Log.e("ghui", "size:" + elements.size());
                 String content;
