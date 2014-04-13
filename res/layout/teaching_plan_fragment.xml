@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+        <RelativeLayout
+                style="@style/content_root"
+                android:layout_width="fill_parent"
+                >
+
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="周次"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    android:id="@+id/line1"
+                    style="@style/content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
+                style="@style/content_root"
+                android:layout_width="fill_parent"
+                >
+
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="节次"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    style="@style/content"
+                    android:id="@+id/line2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
+                style="@style/content_root"
+                android:layout_width="fill_parent"
+                >
+
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="地点"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    style="@style/content"
+                    android:id="@+id/line3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
+                style="@style/content_root"
+                android:layout_width="fill_parent"
+                >
+
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="学分"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    style="@style/content"
+                    android:id="@+id/line4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
+                style="@style/content_root"
+                android:layout_width="fill_parent"
+                >
+
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="总学时"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    style="@style/content"
+                    android:id="@+id/line5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
+                style="@style/content_root"
+                android:layout_width="fill_parent"
+                >
+
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="讲授学时"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    style="@style/content"
+                    android:id="@+id/line6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
+                style="@style/content_root"
+                android:layout_width="fill_parent"
+                >
+
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="上机学时"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    style="@style/content"
+                    android:id="@+id/line7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
+                style="@style/content_root"
+                android:layout_width="fill_parent"
+                >
+
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="课程类型"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    style="@style/content"
+                    android:id="@+id/line8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
+                style="@style/content_root"
+                android:layout_width="fill_parent"
+                >
+
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="授课方式"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    style="@style/content"
+                    android:id="@+id/line9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
+                style="@style/content_root"
+                android:layout_width="fill_parent"
+                >
+
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="考核方式"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    style="@style/content"
+                    android:id="@+id/line10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
+                style="@style/content_root"
+                android:layout_width="fill_parent"
+                >
+
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="上课班号"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    style="@style/content"
+                    android:id="@+id/line11"
+                    android:textColor="@color/link_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
+                style="@style/content_root"
+                android:layout_width="fill_parent"
+                >
+
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="上课班级构成"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <me.ghui.AMS.UI.View.MarqueeTextView
+                    style="@style/content"
+                    android:id="@+id/line12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>

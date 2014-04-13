@@ -109,6 +109,17 @@ public class NetUtils {
         return doc;
     }
 
+    public static Document postDataToServer(String url, Map<String, String> requestData) {
+        Document doc;
+        try {
+            doc = getConnection(url).data(requestData).post();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return postDataToServer(url, requestData);
+        }
+        return doc;
+    }
+
     public static Document postDataToServer(String url, Map<String, String> requestData, String refer) {
         //todo
         Document doc;

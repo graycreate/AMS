@@ -9,20 +9,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import me.ghui.AMS.R;
 import me.ghui.AMS.UI.Activity.CourseActivity;
+import me.ghui.AMS.UI.Activity.TeachingPlanActivity;
 import org.jsoup.select.Elements;
 
 /**
- * Created by ghui on 4/12/14.
+ * Created by ghui on 4/13/14.
  */
-public class CourseItemFragment extends Fragment {
-    public static final String POS = "pos";
+public class TeachingPlanFragment extends Fragment {
+    public static String POS = "pos";
     private int pos;
     private TextView[] tvs;
     private View root;
     private int ids[] = {
-            R.id.line1,
-            R.id.line2,
-            R.id.line3,
             R.id.line4,
             R.id.line5,
             R.id.line6,
@@ -32,9 +30,9 @@ public class CourseItemFragment extends Fragment {
             R.id.line10,
             R.id.line11,
             R.id.line12,
-            R.id.line13,
-            R.id.line14,
-            R.id.line15
+            R.id.line1,
+            R.id.line2,
+            R.id.line3
     };
 
     @Override
@@ -46,17 +44,16 @@ public class CourseItemFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.course_item_fragment, container, false);
-        Log.e("ghui", "onCreateView pos: " + pos);
+        root = inflater.inflate(R.layout.teaching_plan_fragment, container, false);
         findView();
-        Elements es = ((CourseActivity) getActivity()).es;
+        Elements es = ((TeachingPlanActivity) getActivity()).es;
         fillData(es);
         return root;
     }
 
     private void findView() {
-        tvs = new TextView[15];
-        for (int i = 0; i < 15; i++) {
+        tvs = new TextView[12];
+        for (int i = 0; i < 12; i++) {
             tvs[i] = (TextView) root.findViewById(ids[i]);
         }
     }
@@ -67,30 +64,9 @@ public class CourseItemFragment extends Fragment {
         }
         Elements elements = es.get(pos).children();
         String text = "";
-        for (int i = 1; i < elements.size(); i++) {
+        for (int i = 2; i < elements.size(); i++) {
             text = elements.get(i).text();
-            if (i >= 1 && i <= 3 && pos > 0) {
-                if (text.isEmpty()) {
-                    text = es.get(pos - 1).children().get(i).text();
-                    if (text.isEmpty()) {
-                        text = es.get(pos - 2).children().get(i).text();
-                    }
-                }
-            }
-            if (i == 11) {
-                text = text.isEmpty() ? "单双" : text;
-            }
-            tvs[i - 1].setText(text);
+            tvs[i - 2].setText(text);
         }
     }
-
-//    private String shouldSameAsBefore(Elements es, int pos, int i) {
-//        Elements elements = es.get(pos).children();
-//        if (i < 4 && i > 0) {
-//            if (elements.get(i).text().isEmpty()) {
-//                shouldSameAsBefore(es, pos - 1, i);
-//            }
-//        }
-//        return elements.get(i).text();
-//    }
 }

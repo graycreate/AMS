@@ -55,10 +55,6 @@ public class CourseActivity extends BaseActivity {
             @Override
             public void run() {
                 Document doc = NetUtils.getDataFromServer(Constants.TERM_INFO_URL);
-                if (doc == null) {
-                    Log.e("ghui", "doc is null");
-                    return;
-                }
                 Elements elements = doc.select("option[value]");
                 Log.e("ghui", "elements: " + elements);
                 for (Element e : elements) {
@@ -77,6 +73,7 @@ public class CourseActivity extends BaseActivity {
                 mPager.post(new Runnable() {
                     @Override
                     public void run() {
+                        findViewById(R.id.pager_title_strip).setVisibility(View.VISIBLE);
                         mPager.setAdapter(pagerAdapter);
                     }
                 });
@@ -143,12 +140,6 @@ public class CourseActivity extends BaseActivity {
             }
 
             @Override
-            public void destroyItem(View container, int position, Object object) {
-                super.destroyItem(container, position, object);
-                //do nothing
-            }
-
-            @Override
             public int getItemPosition(Object object) {
                 return POSITION_NONE;
             }
@@ -192,11 +183,11 @@ public class CourseActivity extends BaseActivity {
 
     public void search() {
         showProgressBar();
-        String referer = "http://211.84.112.49/lyit/znpk/Pri_TeacKCJXRW.aspx";
+//        String referer = "http://211.84.112.49/lyit/znpk/Pri_TeacKCJXRW.aspx";
         HashMap<String, String> data = new HashMap<String, String>();
         data.put("Sel_XNXQ", values.get(currentSelection));
         data.put("Submit01", "检索");
-        Document doc = NetUtils.postDataToServer(Constants.COURSE_INFO_URL, data, referer);
+        Document doc = NetUtils.postDataToServer(Constants.COURSE_INFO_URL, data);
         es = doc.select("tbody").get(1).select("tr[class!=T]");
         dismissProgressBar();
         Log.e("ghui", "doc::" + es.text());
