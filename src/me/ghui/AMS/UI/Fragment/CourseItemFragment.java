@@ -1,4 +1,4 @@
-package me.ghui.AMS.UI;
+package me.ghui.AMS.UI.Fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,12 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import me.ghui.AMS.R;
+import me.ghui.AMS.UI.Activity.CourseActivity;
 import org.jsoup.select.Elements;
 
 /**
  * Created by ghui on 4/12/14.
  */
-public class CourseItemFragment extends Fragment implements CourseActivity.onElementsChangedListener{
+public class CourseItemFragment extends Fragment {
     public static final String POS = "pos";
     private int pos;
     private TextView[] tvs;
@@ -83,14 +84,31 @@ public class CourseItemFragment extends Fragment implements CourseActivity.onEle
             return;
         }
         Elements elements = es.get(pos).children();
-        Log.e("ghui", "size:" + elements.size());
+        String text = "";
         for (int i = 1; i < elements.size(); i++) {
-            tvs[i - 1].setText(elements.get(i).text());
+            text = elements.get(i).text();
+            if (i >= 1 && i <= 3 && pos > 0) {
+                if (text.isEmpty()) {
+                    text = es.get(pos - 1).children().get(i).text();
+                    if (text.isEmpty()) {
+                        text = es.get(pos - 2).children().get(i).text();
+                    }
+                }
+            }
+            if (i == 11) {
+                text = text.isEmpty() ? "单双" : text;
+            }
+            tvs[i - 1].setText(text);
         }
     }
 
-    @Override
-    public void onElementsChanged(Elements es) {
-        fillData(es);
-    }
+//    private String shouldSameAsBefore(Elements es, int pos, int i) {
+//        Elements elements = es.get(pos).children();
+//        if (i < 4 && i > 0) {
+//            if (elements.get(i).text().isEmpty()) {
+//                shouldSameAsBefore(es, pos - 1, i);
+//            }
+//        }
+//        return elements.get(i).text();
+//    }
 }

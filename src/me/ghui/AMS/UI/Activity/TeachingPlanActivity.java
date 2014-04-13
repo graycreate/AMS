@@ -1,13 +1,13 @@
-package me.ghui.AMS.UI;
+package me.ghui.AMS.UI.Activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import me.ghui.AMS.R;
+import me.ghui.AMS.UI.Activity.BaseActivity;
 
 /**
  * Created by ghui on 4/7/14.
  */
-public class TeachingTaskActivity extends BaseActivity {
+public class TeachingPlanActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }

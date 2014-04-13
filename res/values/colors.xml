@@ -5,5 +5,6 @@
     <color name="main_text_color">#fffff0</color>
     <color name="btn_pressed_color">#0B294D</color>
     <color name="grey">#d4d4d4</color>
+    <color name="link_color">#4F92D2</color>
 
 </resources>

@@ -1,20 +1,14 @@
-package me.ghui.AMS.UI;
+package me.ghui.AMS.UI.Activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import me.ghui.AMS.R;
+import me.ghui.AMS.UI.Activity.BaseActivity;
 import me.ghui.AMS.domain.Teacher;
 import me.ghui.AMS.net.NetUtils;
 import me.ghui.AMS.utils.Constants;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 

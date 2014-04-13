@@ -1,4 +1,4 @@
-package me.ghui.AMS.UI;
+package me.ghui.AMS.UI.Activity;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -8,8 +8,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 import me.ghui.AMS.R;
+import me.ghui.AMS.UI.Animation.ZoomOutPageTransformer;
+import me.ghui.AMS.UI.Fragment.CourseItemFragment;
 import me.ghui.AMS.net.NetUtils;
 import me.ghui.AMS.utils.Constants;
 import org.jsoup.nodes.Document;
@@ -36,37 +37,6 @@ public class CourseActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initFragments();
-    }
-
-    private void initFragments() {
-        mPager = (ViewPager) findViewById(R.id.vPager);
-
-        pagerAdapter = new FragmentStatePagerAdapter(getSupportFragmentManager()) {
-            @Override
-            public android.support.v4.app.Fragment getItem(int i) {
-                CourseItemFragment fragment = new CourseItemFragment();
-                Bundle args = new Bundle();
-                args.putInt(CourseItemFragment.POS, i);
-                fragment.setArguments(args);
-                return fragment;
-            }
-
-            @Override
-            public void destroyItem(View container, int position, Object object) {
-                super.destroyItem(container, position, object);
-                //do nothing
-            }
-
-
-            @Override
-            public int getCount() {
-                if (es == null) {
-                    return 1;
-                }
-                return es.size();
-            }
-
-        };
     }
 
     @Override
@@ -124,10 +94,15 @@ public class CourseActivity extends BaseActivity {
                         public void run() {
                             search();
                             //todo
-                            pagerAdapter.notifyDataSetChanged();
-                            for (int i=0;i<pagerAdapter.getCount();i++) {
-                                ((onElementsChangedListener)pagerAdapter.getItem(i)).onElementsChanged(es);
-                            }
+                            mPager.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    pagerAdapter.notifyDataSetChanged();
+                                    if (mPager.getCurrentItem() != 0) {
+                                        mPager.setCurrentItem(0);
+                                    }
+                                }
+                            });
                         }
                     }).start();
                 }
@@ -137,6 +112,53 @@ public class CourseActivity extends BaseActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+    }
+
+    private void initFragments() {
+        mPager = (ViewPager) findViewById(R.id.vPager);
+        mPager.setPageTransformer(true, new ZoomOutPageTransformer());
+//        mPager.setPageTransformer(true, new DepthPageTransformer());
+        pagerAdapter = new FragmentStatePagerAdapter(getSupportFragmentManager()) {
+
+            private String getProTitle(int pos) {
+                String title = es.get(pos).children().get(2).text();
+                if (title.isEmpty()) {
+                    return getProTitle(pos - 1);
+                }
+                return title;
+            }
+
+            @Override
+            public android.support.v4.app.Fragment getItem(int i) {
+                CourseItemFragment fragment = new CourseItemFragment();
+                Bundle args = new Bundle();
+                args.putInt(CourseItemFragment.POS, i);
+                fragment.setArguments(args);
+                return fragment;
+            }
+
+            @Override
+            public CharSequence getPageTitle(int position) {
+                return getProTitle(position);
+            }
+
+            @Override
+            public void destroyItem(View container, int position, Object object) {
+                super.destroyItem(container, position, object);
+                //do nothing
+            }
+
+            @Override
+            public int getItemPosition(Object object) {
+                return POSITION_NONE;
+            }
+
+            @Override
+            public int getCount() {
+                return es == null ? 1 : es.size();
+            }
+
+        };
     }
 
     /*
@@ -156,25 +178,27 @@ public class CourseActivity extends BaseActivity {
         合班人数
      */
 
+    @Override
+    public void onBackPressed() {
+        if (mPager.getCurrentItem() == 0) {
+            // If the user is currently looking at the first step, allow the system to handle the
+            // Back button. This calls finish() on this activity and pops the back stack.
+            super.onBackPressed();
+        } else {
+            // Otherwise, select the previous step.
+            mPager.setCurrentItem(mPager.getCurrentItem() - 1);
+        }
+    }
+
     public void search() {
         showProgressBar();
         String referer = "http://211.84.112.49/lyit/znpk/Pri_TeacKCJXRW.aspx";
         HashMap<String, String> data = new HashMap<String, String>();
         data.put("Sel_XNXQ", values.get(currentSelection));
         data.put("Submit01", "检索");
-                /*
-               讲授/上机 序号 承担单位 课程 学分 总学时 讲授 学时 实验 学时 上机 学时 其他 学时 周学时 周次 单双周 授课 方式 上课班级 上课班号 上课班级名称 合班人数
-               1 计算机与信息工程系 [050086]单片机原理与应用 4.0 64.0 54.0 10.0 0.0 0.0 4.0 1-19 讲授 002 56
-               2 教务处 [007218]PPT从入门到精通 1.5 24.0 24.0 0.0 0.0 0.0 4.0 1-19 讲授 001 219
-               3 24.0 24.0 0.0 0.0 0.0 4.0 1-19 讲授 002 169
-                 */
         Document doc = NetUtils.postDataToServer(Constants.COURSE_INFO_URL, data, referer);
         es = doc.select("tbody").get(1).select("tr[class!=T]");
         dismissProgressBar();
         Log.e("ghui", "doc::" + es.text());
-    }
-
-    public interface onElementsChangedListener {
-        public void onElementsChanged(Elements es);
     }
 }

@@ -1,4 +1,4 @@
-package me.ghui.AMS.UI;
+package me.ghui.AMS.UI.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -41,8 +41,8 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
-    public void gotoTeachingTask(View view) {
-        Intent intent = new Intent(this,TeachingTaskActivity.class);
+    public void gotoTeachingPlan(View view) {
+        Intent intent = new Intent(this,TeachingPlanActivity.class);
         startActivity(intent);
     }
 

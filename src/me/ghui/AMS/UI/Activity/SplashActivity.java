@@ -1,13 +1,9 @@
-package me.ghui.AMS.UI;
+package me.ghui.AMS.UI.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Handler;
-import android.text.Editable;
-import android.text.InputType;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -20,8 +16,6 @@ import me.ghui.AMS.domain.User;
 import me.ghui.AMS.net.NetUtils;
 import me.ghui.AMS.utils.LoginDataHelper;
 import me.ghui.AMS.utils.StringHelper;
-
-import java.io.IOException;
 
 /**
  * Created by ghui on 3/25/14.
@@ -54,8 +48,6 @@ public class SplashActivity extends Activity {
         StringHelper.toUpcase(et_validate_code);
         showInvalidateCode();
     }
-
-
 
     private void initLogic() {
         if (!LoginDataHelper.hasLogin(this)) {
@@ -103,7 +95,7 @@ public class SplashActivity extends Activity {
                        logo.clearAnimation();
                        logo.setVisibility(View.GONE);
                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                       overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+                       overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
                        finish();
                    }
                });

@@ -1,4 +1,4 @@
-package me.ghui.AMS.UI;
+package me.ghui.AMS.UI.Activity;
 
 import android.app.Activity;
 import android.os.Bundle;import me.ghui.AMS.R;

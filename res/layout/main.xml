@@ -23,17 +23,17 @@
                 android:id="@+id/tv_teaching_task"
                 style="@style/GridView_TV"
                 android:text="@string/teaching_task"
-                android:onClick="gotoTeachingTask"
-                android:layout_alignParentRight="true"
+                android:onClick="toggleExtendMenu1"
+                android:layout_centerHorizontal="true"
                 android:drawableTop="@drawable/ic_launcher"
                 />
 
         <TextView
-                android:onClick="toggleExtendMenu1"
                 android:id="@+id/tv_teaching_play"
                 style="@style/GridView_TV"
+                android:onClick="gotoTeachingPlan"
                 android:text="@string/teaching_plan"
-                android:layout_centerHorizontal="true"
+                android:layout_alignParentRight="true"
                 android:layout_gravity="right"
                 android:drawableTop="@drawable/ic_launcher"
                 />

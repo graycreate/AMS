@@ -1,4 +1,4 @@
-package me.ghui.AMS.UI;
+package me.ghui.AMS.UI.Activity;
 
 import android.app.Activity;
 import android.app.Fragment;
