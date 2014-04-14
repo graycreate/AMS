@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 /**
  * Created by ghui on 4/9/14.
@@ -56,5 +57,9 @@ public abstract class BaseActivity extends FragmentActivity {
                 layout.setVisibility(View.GONE);
             }
         });
+    }
+
+    public void showToast(String toast) {
+        Toast.makeText(this,toast,Toast.LENGTH_SHORT).show();
     }
 }

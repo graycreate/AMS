@@ -109,6 +109,17 @@ public class NetUtils {
         return doc;
     }
 
+    public static Document getDataFromServer(String url,String refer) {
+        Document doc;
+        try {
+            doc = getConnection(url).referrer(refer).get();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e("ghui", "doc is null");
+            return getDataFromServer(url);
+        }
+        return doc;
+    }
     public static Document postDataToServer(String url, Map<String, String> requestData) {
         Document doc;
         try {
