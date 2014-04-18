@@ -1,7 +1,5 @@
 package me.ghui.AMS.UI.Activity;
 
-import android.app.Activity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -9,13 +7,17 @@ import android.widget.Toast;
 import me.ghui.AMS.R;
 import me.ghui.AMS.net.NetUtils;
 import me.ghui.AMS.utils.Constants;
+import me.ghui.AMS.utils.MyApp;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by ghui on 4/7/14.
  */
-public class OthersActivity extends BaseActivity {
+public class ModPswActivity extends BaseActivity {
     String userName;
     String Id;
     EditText usrName_et;
@@ -26,7 +28,7 @@ public class OthersActivity extends BaseActivity {
 
     @Override
     public int getLayoutResourceId() {
-        return R.layout.others;
+        return R.layout.mod_psw;
     }
 
     @Override
@@ -59,15 +61,41 @@ public class OthersActivity extends BaseActivity {
         }).start();
     }
 
-
+/*
+oldPWD:65928088
+NewPWD:1
+CNewPWD:1
+   Referer:http://211.84.112.49/lyit/MyWeb/User_ModPWD.aspx
+                    Request URL:http://211.84.112.49/lyit/MyWeb/User_ModPWD.aspx
+ */
     public void ModifyPSW_onClick(View view) {
         if (!check()) {
             return;
         }
+        final Map<String, String> data = new HashMap<String, String>();
+        data.put("NewPWD", psw_et.getText().toString());
+        data.put("CNewPWD", psw_confirm_et.getText().toString());
+        data.put("oldPWD", psw_old_et.getText().toString());
         new Thread(new Runnable() {
             @Override
             public void run() {
                 //todo post the request...
+                showProgressBar();
+                Document doc = NetUtils.postDataToServer(Constants.PSW_MOD_URL, data,Constants.PSW_MOD_URL);
+                final boolean result = doc.text().toString().contains("您的密码已经修改成功");
+                final String result_str = result?"您的密码已经修改成功!请重新登录":"密码修改遇到问题！";
+                    psw_et.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(ModPswActivity.this, result_str, Toast.LENGTH_SHORT).show();
+                            if (result) {
+//                                MagicAppRestart.doRestart(ModPswActivity.this);
+                                //todo restart
+                                MyApp.getMyApp().restart();
+                            }
+                        }
+                    });
+                dismissProgressBar();
             }
         }).start();
     }

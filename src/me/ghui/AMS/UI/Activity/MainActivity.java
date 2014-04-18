@@ -7,17 +7,16 @@ import android.util.Log;
 import android.view.View;
 import me.ghui.AMS.R;
 
-public class MainActivity extends Activity {
+public class MainActivity extends BaseActivity {
     View extend_menu1;
     View extend_menu2;
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        init();
+    public int getLayoutResourceId() {
+        return R.layout.main;
     }
 
-    private void init() {
+    @Override
+    public void init() {
         extend_menu1 = findViewById(R.id.extend_menu_1);
         extend_menu2 = findViewById(R.id.extend_menu_2);
     }
@@ -61,7 +60,7 @@ public class MainActivity extends Activity {
         startActivity(new Intent(this,InputGradesActivity.class));
     }
     public void gotoOthersActivity(View view) {
-        startActivity(new Intent(this,OthersActivity.class));
+        startActivity(new Intent(this,ModPswActivity.class));
     }
 }
 

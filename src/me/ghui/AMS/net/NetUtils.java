@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.util.Log;
 import me.ghui.AMS.domain.User;
 import me.ghui.AMS.utils.Constants;
+import me.ghui.AMS.utils.MyApp;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
@@ -56,8 +57,8 @@ public class NetUtils {
         }
         return null;
     }
-
-    public static void login(final User user) {
+    //                                验证码错误！<br>登录失败！           帐号或密码不正确！请重新输入。
+    public static String login(final User user) {
         DefaultHttpClient httpClient = new DefaultHttpClient();
         HttpPost httpPost = new HttpPost(Constants.LOGIN_URL);
         List<NameValuePair> pairs = new ArrayList<NameValuePair>();
@@ -78,23 +79,25 @@ public class NetUtils {
 //                httpPost.getParams().setParameter(ClientPNames.HANDLE_REDIRECTS, false);
         try {
             httpPost.setEntity(new UrlEncodedFormEntity(pairs, HTTP.UTF_8));
-        } catch (UnsupportedEncodingException e) {
+            HttpResponse response = httpClient.execute(httpPost);
+            if (response == null) {
+                return "网络错误！";
+            }
+            String result_str = EntityUtils.toString(response.getEntity());
+            if (result_str.contains("验证码错误")) {
+                Log.e("ghui", "验证码错误");
+                return "验证码错误!";
+            }else if (result_str.contains("帐号或密码不正确")) {
+                Log.e("ghui", "帐号或密码不正确");
+                return "帐号或密码不正确!";
+            } else {
+                Log.e("ghui", "登录成功!");
+                return "登录成功";
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        HttpResponse response = null;
-        try {
-            response = httpClient.execute(httpPost);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-            Log.e("ghui", "login successfully!");
-//            try {
-////                Log.e("ghui", "content: " + EntityUtils.toString(response.getEntity()));
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-        }
+        return "";
     }
 
     public static Document getDataFromServer(String url) {
@@ -105,6 +108,9 @@ public class NetUtils {
             e.printStackTrace();
             Log.e("ghui", "doc is null");
             return getDataFromServer(url);
+        }
+        if (isTimeOut(doc)) {
+            MyApp.getMyApp().restart("登录超时，请重新登录！");
         }
         return doc;
     }
@@ -118,6 +124,9 @@ public class NetUtils {
             Log.e("ghui", "doc is null");
             return getDataFromServer(url);
         }
+        if (isTimeOut(doc)) {
+            MyApp.getMyApp().restart("登录超时，请重新登录！");
+        }
         return doc;
     }
     public static Document postDataToServer(String url, Map<String, String> requestData) {
@@ -127,6 +136,9 @@ public class NetUtils {
         } catch (IOException e) {
             e.printStackTrace();
             return postDataToServer(url, requestData);
+        }
+        if (isTimeOut(doc)) {
+            MyApp.getMyApp().restart("登录超时，请重新登录！");
         }
         return doc;
     }
@@ -140,7 +152,14 @@ public class NetUtils {
             e.printStackTrace();
             return postDataToServer(url, requestData, refer);
         }
+        if (isTimeOut(doc)) {
+            MyApp.getMyApp().restart("登录超时，请重新登录！");
+        }
         return doc;
+    }
+
+    public static boolean isTimeOut(Document doc) {
+        return doc.text().contains("您无权访问此页");
     }
 
     private static Connection getConnection(String url) {

@@ -20,7 +20,7 @@ import me.ghui.AMS.utils.StringHelper;
 /**
  * Created by ghui on 3/25/14.
  */
-public class SplashActivity extends Activity {
+public class SplashActivity extends BaseActivity {
     LinearLayout layout;
     ImageView logo;
     ImageView img_validatecode;
@@ -28,10 +28,13 @@ public class SplashActivity extends Activity {
     EditText et_password;
     EditText et_validate_code;
     ProgressBar progressBar;
+    @Override
+    public int getLayoutResourceId() {
+        return R.layout.splash_layout;
+    }
 
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash_layout);
+    @Override
+    public void init() {
         initUI();
         initLogic();
     }
@@ -86,13 +89,33 @@ public class SplashActivity extends Activity {
        new Thread(new Runnable() {
            @Override
            public void run() {
-              NetUtils.login(user);
-//               user.login();
+             final String result =  NetUtils.login(user);
                img_validatecode.post(new Runnable() {
                    @Override
                    public void run() {
-                       Toast.makeText(SplashActivity.this,"login successfully!",Toast.LENGTH_SHORT).show();
+                       Toast.makeText(SplashActivity.this,result,Toast.LENGTH_SHORT).show();
                        logo.clearAnimation();
+                       if (!result.contains("登录成功")) {
+                           if (result.contains("验证码错误")) {
+                               //todo clear validate code edittext then refresh the picture
+                               et_validate_code.setText("");
+                               et_validate_code.setHint("请重新输入验证码");
+                               showInvalidateCode();
+
+                           } else if (result.contains("帐号或密码不正确")) {
+                               //todo clear psw edittext
+                               et_work_id.setText("");
+                               et_work_id.setHint("请重新输入工号");
+                               et_password.setText("");
+                               et_password.setHint("请重新输入密码");
+                           } else if (result.contains("网络错误")) {
+                               Toast.makeText(SplashActivity.this, "网络错误!", Toast.LENGTH_SHORT).show();
+                           } else {
+                               Toast.makeText(SplashActivity.this, "未知错误!", Toast.LENGTH_SHORT).show();
+                           }
+                           layout.setVisibility(View.VISIBLE);
+                           return;
+                       }
                        logo.setVisibility(View.GONE);
                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
                        overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
@@ -105,6 +128,7 @@ public class SplashActivity extends Activity {
 
 
     private void showInvalidateCode() {
+        progressBar.setVisibility(View.VISIBLE);
         new Thread(new Runnable() {
             @Override
             public void run() {

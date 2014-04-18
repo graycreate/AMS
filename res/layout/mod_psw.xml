@@ -62,6 +62,7 @@
 
             <EditText
                     android:inputType="textPassword"
+                    android:maxLength="16"
                     android:id="@+id/psw_old"
                     android:layout_weight="1"
                     android:layout_width="0dp"
@@ -79,6 +80,10 @@
 
             <EditText
                     android:id="@+id/psw"
+                    android:maxLength="16"
+                    android:hint="密码长度不能超过16位"
+                    android:textColorHint="@android:color/holo_red_light"
+                    android:ellipsize="middle"
                     android:inputType="textPassword"
                     android:layout_weight="1"
                     android:layout_width="0dp"
@@ -97,6 +102,7 @@
             <EditText
                     android:id="@+id/psw_confirm"
                     android:inputType="textPassword"
+                    android:maxLength="16"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>

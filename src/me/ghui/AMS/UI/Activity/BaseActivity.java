@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+import me.ghui.AMS.utils.MyApp;
 
 /**
  * Created by ghui on 4/9/14.
@@ -20,11 +21,18 @@ import android.widget.Toast;
 public abstract class BaseActivity extends FragmentActivity {
     private RelativeLayout layout;
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        MyApp.getMyApp().removeActivity(this);
+    }
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResourceId());
         initUI();
         init();
+        MyApp.getMyApp().addActivity(this);
     }
 
     public abstract int getLayoutResourceId();
