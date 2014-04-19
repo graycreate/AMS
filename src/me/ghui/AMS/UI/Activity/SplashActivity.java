@@ -28,6 +28,7 @@ public class SplashActivity extends BaseActivity {
     EditText et_password;
     EditText et_validate_code;
     ProgressBar progressBar;
+
     @Override
     public int getLayoutResourceId() {
         return R.layout.splash_layout;
@@ -35,8 +36,16 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public void init() {
+        toast();
         initUI();
         initLogic();
+    }
+
+    private void toast() {
+        String toast = getIntent().getStringExtra("toast");
+        if (toast != null && toast.length() > 0) {
+            Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void initUI() {
@@ -86,44 +95,42 @@ public class SplashActivity extends BaseActivity {
 
 
     private void executeLogin(final User user) {
-       new Thread(new Runnable() {
-           @Override
-           public void run() {
-             final String result =  NetUtils.login(user);
-               img_validatecode.post(new Runnable() {
-                   @Override
-                   public void run() {
-                       Toast.makeText(SplashActivity.this,result,Toast.LENGTH_SHORT).show();
-                       logo.clearAnimation();
-                       if (!result.contains("登录成功")) {
-                           if (result.contains("验证码错误")) {
-                               //todo clear validate code edittext then refresh the picture
-                               et_validate_code.setText("");
-                               et_validate_code.setHint("请重新输入验证码");
-                               showInvalidateCode();
-
-                           } else if (result.contains("帐号或密码不正确")) {
-                               //todo clear psw edittext
-                               et_work_id.setText("");
-                               et_work_id.setHint("请重新输入工号");
-                               et_password.setText("");
-                               et_password.setHint("请重新输入密码");
-                           } else if (result.contains("网络错误")) {
-                               Toast.makeText(SplashActivity.this, "网络错误!", Toast.LENGTH_SHORT).show();
-                           } else {
-                               Toast.makeText(SplashActivity.this, "未知错误!", Toast.LENGTH_SHORT).show();
-                           }
-                           layout.setVisibility(View.VISIBLE);
-                           return;
-                       }
-                       logo.setVisibility(View.GONE);
-                       startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                       overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
-                       finish();
-                   }
-               });
-           }
-       }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final String result = NetUtils.login(SplashActivity.this,user);
+                if (result == null) {
+                    return;
+                }
+                img_validatecode.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(SplashActivity.this, result, Toast.LENGTH_SHORT).show();
+                        logo.clearAnimation();
+                        if (!result.contains("登录成功")) {
+                            if (result.contains("验证码错误")) {
+                                //todo clear validate code edittext then refresh the picture
+                                et_validate_code.setText("");
+                                et_validate_code.setHint("请重新输入验证码");
+                                showInvalidateCode();
+                            } else if (result.contains("帐号或密码不正确")) {
+                                //todo clear psw edittext
+                                et_work_id.setText("");
+                                et_work_id.setHint("请重新输入工号");
+                                et_password.setText("");
+                                et_password.setHint("请重新输入密码");
+                            }
+                            layout.setVisibility(View.VISIBLE);
+                            return;
+                        }
+                        logo.setVisibility(View.GONE);
+                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                        finish();
+                    }
+                });
+            }
+        }).start();
     }
 
 
@@ -132,7 +139,7 @@ public class SplashActivity extends BaseActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                final Bitmap bitmap = NetUtils.getValidateCode();
+                final Bitmap bitmap = NetUtils.getValidateCode(SplashActivity.this);
                 img_validatecode.post(new Runnable() {
                     @Override
                     public void run() {

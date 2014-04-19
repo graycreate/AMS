@@ -18,4 +18,8 @@ public interface Constants {
     String TERM_INFO_TEA_PLAN = "http://211.84.112.49/lyit/znpk/Pri_TeacSel.aspx";
     String PLAN_INFO_URL = "http://211.84.112.49/lyit/znpk/Pri_TeacSel_rpt.aspx";
     String PSW_MOD_URL = "http://211.84.112.49/lyit/MyWeb/User_ModPWD.aspx";
+    String COURSE_GRADE_INFO_URL = "http://211.84.112.49/lyit/xscj/Tea_skbjcj.aspx";
+    String COURSE_GRADE_INFO_DETAIL_URL = "http://211.84.112.49/lyit/xscj/Tea_skbjcj_rpt.aspx";
+    String SOURCE_GRADE_INFO_URL = "http://211.84.112.49/lyit/XSCJ/Tea_skbjcj_print.aspx";
+    String FINAL_GRADE_INFO_URL = "http://211.84.112.49/lyit/XSCJ/Tea_skbjcj_printyx.aspx";
 }

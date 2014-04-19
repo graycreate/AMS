@@ -44,7 +44,10 @@ public class ModPswActivity extends BaseActivity {
             @Override
             public void run() {
                 String refer = "http://211.84.112.49/lyit/sys/menu.aspx";
-                Document document = NetUtils.getDataFromServer(Constants.PSW_MOD_URL, refer);
+                Document document = NetUtils.getDataFromServer(ModPswActivity.this,Constants.PSW_MOD_URL, refer);
+                if (document == null) {
+                    return;
+                }
                 Elements elements = document.select("input");
                 userName = elements.get(1).attr("value");
                 Id = elements.get(2).attr("value");
@@ -81,17 +84,17 @@ CNewPWD:1
             public void run() {
                 //todo post the request...
                 showProgressBar();
-                Document doc = NetUtils.postDataToServer(Constants.PSW_MOD_URL, data,Constants.PSW_MOD_URL);
+                Document doc = NetUtils.postDataToServer(ModPswActivity.this,Constants.PSW_MOD_URL, data,Constants.PSW_MOD_URL);
+                if (doc == null) {
+                    return;
+                }
                 final boolean result = doc.text().toString().contains("您的密码已经修改成功");
                 final String result_str = result?"您的密码已经修改成功!请重新登录":"密码修改遇到问题！";
                     psw_et.post(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(ModPswActivity.this, result_str, Toast.LENGTH_SHORT).show();
                             if (result) {
-//                                MagicAppRestart.doRestart(ModPswActivity.this);
-                                //todo restart
-                                MyApp.getMyApp().restart();
+                                MyApp.getMyApp().restart(result_str);
                             }
                         }
                     });

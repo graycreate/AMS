@@ -43,17 +43,11 @@ public class MyApp extends Application {
         }
     }
 
-    public void restart() {
+    public void restart(String toast) {
         exit();
         Intent intent = new Intent(myApp, SplashActivity.class);
+        intent.putExtra("toast", toast);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         myApp.startActivity(intent);
-    }
-
-    public void restart(String toast) {
-        if (toast.length() > 0) {
-            Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
-        }
-        restart();
     }
 }

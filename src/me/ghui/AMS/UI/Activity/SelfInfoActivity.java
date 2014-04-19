@@ -64,7 +64,10 @@ public class SelfInfoActivity extends BaseActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Document document = NetUtils.getDataFromServer(Constants.TEACHER_INFO_URL);
+                Document document = NetUtils.getDataFromServer(SelfInfoActivity.this,Constants.TEACHER_INFO_URL);
+                if (document == null) {
+                    return;
+                }
                 Elements elements = document.select("td[class]");
                 Log.e("ghui", "size:" + elements.size());
                 String content;

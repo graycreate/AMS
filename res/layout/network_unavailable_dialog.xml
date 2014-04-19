@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:gravity="center"
+              android:background="@color/main_color_bg"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content">
+
+    <TextView
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:text="网络不可用，请开启网络后重试！"
+            android:textSize="15sp"
+            android:textColor="@android:color/holo_red_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <LinearLayout
+            android:padding="20dp"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:weightSum="2"
+            android:layout_height="wrap_content">
+
+        <Button
+                android:onClick="cancleSetOnNetWork_OnClick"
+                android:text="取消"
+                android:background="@drawable/selecor_btn"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="wrap_content"/>
+
+        <Button
+                android:onClick="SetOnNetWork_OnClick"
+                android:text="确定"
+                android:background="@drawable/selecor_btn"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>

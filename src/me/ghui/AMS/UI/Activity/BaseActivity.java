@@ -20,6 +20,7 @@ import me.ghui.AMS.utils.MyApp;
  */
 public abstract class BaseActivity extends FragmentActivity {
     private RelativeLayout layout;
+    public Handler handler;
 
     @Override
     protected void onDestroy() {
@@ -33,6 +34,7 @@ public abstract class BaseActivity extends FragmentActivity {
         initUI();
         init();
         MyApp.getMyApp().addActivity(this);
+        handler = new Handler();
     }
 
     public abstract int getLayoutResourceId();

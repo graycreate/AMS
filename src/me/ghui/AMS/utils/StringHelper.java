@@ -31,4 +31,8 @@ public class StringHelper {
             }
         });
     }
+
+    public static String getUrlData(String url) {
+        return url.substring(url.indexOf("?"), url.indexOf("',"));
+    }
 }

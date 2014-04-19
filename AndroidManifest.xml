@@ -4,14 +4,16 @@
           android:versionCode="1"
           android:versionName="1.0">
 
-    <uses-sdk android:minSdkVersion="16"/>
+    <uses-sdk android:minSdkVersion="11"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <application
             android:theme="@android:style/Theme.Holo.Light"
             android:label="@string/app_name"
             android:icon="@drawable/ic_launcher"
             android:name=".utils.MyApp">
-        <activity android:name=".UI.Activity.SplashActivity"
+        <activity
+                android:name=".UI.Activity.SplashActivity"
                 android:theme="@style/Theme.Splash"
                 >
             <intent-filter>
@@ -28,9 +30,10 @@
                 android:name=".UI.Activity.MainActivity"
                 android:label="@string/main_title">
         </activity>
-        <activity android:name=".UI.Activity.CourseActivity"
-                  android:parentActivityName=".UI.Activity.MainActivity"
-                  android:label="承担课程"
+        <activity
+                android:name=".UI.Activity.CourseActivity"
+                android:parentActivityName=".UI.Activity.MainActivity"
+                android:label="承担课程"
                 />
         <activity
                 android:parentActivityName=".UI.Activity.MainActivity"
@@ -48,5 +51,8 @@
                 android:parentActivityName=".UI.Activity.MainActivity"
                 android:name=".UI.Activity.ModPswActivity"
                 android:label="密码修改"/>
+        <activity android:name=".UI.Activity.NetWorkUnavailableDialog"
+                android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar"
+                />
     </application>
 </manifest>

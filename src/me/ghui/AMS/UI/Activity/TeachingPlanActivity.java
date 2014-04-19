@@ -54,7 +54,7 @@ public class TeachingPlanActivity extends BaseActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Document doc = NetUtils.getDataFromServer(Constants.TERM_INFO_TEA_PLAN);
+                Document doc = NetUtils.getDataFromServer(TeachingPlanActivity.this,Constants.TERM_INFO_TEA_PLAN);
                 Elements elements = doc.select("select[name=Sel_XNXQ]").select("option");
                 Log.e("ghui", "elements: " + elements);
                 for (Element e : elements) {
@@ -180,7 +180,10 @@ public class TeachingPlanActivity extends BaseActivity {
         data.put("Sel_XNXQ", values.get(currentSelection));
         data.put("rad", "on");
         data.put("px", "0");
-        Document doc = NetUtils.postDataToServer(Constants.PLAN_INFO_URL, data);
+        Document doc = NetUtils.postDataToServer(TeachingPlanActivity.this,Constants.PLAN_INFO_URL, data);
+        if (doc == null) {
+            return;
+        }
 //        es = doc.select("tbody").get(1).select("tr[class!=T]");
 //        es = doc.select(".tbody tbody").select("tr[class!=T]");
         es = doc.select("tbody").select("tbody");
@@ -194,4 +197,20 @@ public class TeachingPlanActivity extends BaseActivity {
             Log.e("ghui", "doc::" + es.text());
         }
     }
+
+
+    /*
+     http://211.84.112.49/lyit/XSCJ/Tea_skbjcj_print.aspx?xnxq=20130&kcdm=000236&skbj=000236-001
+原始成绩
+       xnxq:20130
+       kcdm:000236
+       skbj:000236-001
+
+       http://211.84.112.49/lyit/XSCJ/Tea_skbjcj_print.aspx?xnxq=20130&kcdm=000236&skbj=000236-002
+       xnxq:20130
+       kcdm:000236
+       skbj:000236-002
+
+
+     */
 }

@@ -54,7 +54,7 @@ public class CourseActivity extends BaseActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Document doc = NetUtils.getDataFromServer(Constants.TERM_INFO_URL);
+                Document doc = NetUtils.getDataFromServer(CourseActivity.this,Constants.TERM_INFO_URL);
                 Elements elements = doc.select("option[value]");
                 Log.e("ghui", "elements: " + elements);
                 for (Element e : elements) {
@@ -187,7 +187,10 @@ public class CourseActivity extends BaseActivity {
         HashMap<String, String> data = new HashMap<String, String>();
         data.put("Sel_XNXQ", values.get(currentSelection));
         data.put("Submit01", "检索");
-        Document doc = NetUtils.postDataToServer(Constants.COURSE_INFO_URL, data);
+        Document doc = NetUtils.postDataToServer(CourseActivity.this,Constants.COURSE_INFO_URL, data);
+        if (doc == null) {
+            return;
+        }
         es = doc.select("tbody").get(1).select("tr[class!=T]");
         dismissProgressBar();
         Log.e("ghui", "doc::" + es.text());
