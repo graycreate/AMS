@@ -70,6 +70,9 @@
                     android:name="android.app.searchable"
                     android:resource="@xml/searchable"/>
         </activity>
+        <activity android:name=".UI.Activity.ScoreStatsDialog"
+                  android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar"
+                />
 
         <provider
                 android:authorities="me.ghui.ams.search.provider"

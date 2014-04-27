@@ -69,7 +69,6 @@ public class CourseGradeFragment extends Fragment {
         tvs[4].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                parent.showToast("查看有效成绩！");
                 Intent intent = new Intent(parent, ScoreActivity.class);
                 intent.putExtra("data", request_data);
                 startActivity(intent);

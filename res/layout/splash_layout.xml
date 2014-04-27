@@ -13,7 +13,6 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:src="@drawable/lit"
-            android:onClick="getTeaInfo"
             />
 
     <LinearLayout
@@ -40,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
                 android:textColorHint="@color/main_color"
-                android:inputType="numberPassword"
+                android:inputType="textPassword"
                 />
 
         <LinearLayout

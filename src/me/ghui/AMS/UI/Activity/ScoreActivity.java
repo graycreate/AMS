@@ -9,9 +9,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.Menu;
-import android.view.View;
+import android.view.*;
 import android.widget.SearchView;
 import me.ghui.AMS.R;
 import me.ghui.AMS.UI.Animation.ZoomOutPageTransformer;
@@ -93,6 +91,7 @@ public class ScoreActivity extends BaseActivity {
                 Elements elements = document.select("table[bordercolorlight=#000000]").select("table[style=border-collapse:collapse]").select("tbody");
                 if (elements.size() == 0) {
                     showToast("无数据");
+                    dismissProgressBar();
                     return;
                 }
                 es = elements.select("tr");
@@ -101,7 +100,7 @@ public class ScoreActivity extends BaseActivity {
                 List<Element> list = new ArrayList<Element>();
                 for (Element e : es) {
                     text = e.children().get(0).text();
-                    if (text.charAt(0) != 'Z' && text.charAt(0) != 'B') {
+                    if (text.charAt(0) != 'Z' && text.charAt(0) != 'B' && text.charAt(0) != 'D') {
                         list.add(e);
                     }
                 }
@@ -112,6 +111,7 @@ public class ScoreActivity extends BaseActivity {
                     suggest.add(new String[]{e.children().get(0).text(), e.children().get(1).text()});
                 }
                 es_summary = elements.last().select("tr");
+                es_summary.remove(0);
                 Log.e("ghui", "elements.size: " + elements.size());
                 count = es.size();
                 mPager.post(new Runnable() {
@@ -171,15 +171,30 @@ public class ScoreActivity extends BaseActivity {
 
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_stat:
+                //todo
+                Intent intent = new Intent(this, ScoreStatsDialog.class);
+                if (es_summary == null) {
+                    showToast("无数据！");
+                    return true;
+                }
+                intent.putExtra("summary", es_summary.text());
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.score_list_menu, menu);
-
         // Add SearchWidget.
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-
         return super.onCreateOptionsMenu(menu);
     }
 }

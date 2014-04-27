@@ -10,6 +10,21 @@
             android:layout_marginRight="10dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
+        <TextView
+                android:paddingTop="5dp"
+                android:text="分数段统计"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"/>
+
+        <View
+                android:layout_marginTop="5dp"
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@android:color/black"
+                />
 
         <RelativeLayout
                 style="@style/content_root"
@@ -18,7 +33,7 @@
 
             <TextView
                     style="@style/self_info_item"
-                    android:text="学分"
+                    android:text="优秀(100-90)"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -44,7 +59,7 @@
 
             <TextView
                     style="@style/self_info_item"
-                    android:text="总学时"
+                    android:text="良好(90-80)"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -70,7 +85,7 @@
 
             <TextView
                     style="@style/self_info_item"
-                    android:text="上课班号"
+                    android:text="中等(80-70)"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -90,21 +105,19 @@
         </RelativeLayout>
 
         <RelativeLayout
-                android:visibility="gone"
                 style="@style/content_root"
                 android:layout_width="fill_parent"
                 >
 
             <TextView
                     style="@style/self_info_item"
-                    android:text="原始成绩"
+                    android:text="及格(70-60)"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
             <TextView
                     style="@style/content"
                     android:id="@+id/line4"
-                    android:textColor="@color/link_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -124,14 +137,13 @@
 
             <TextView
                     style="@style/self_info_item"
-                    android:text="有效成绩"
+                    android:text="不及格(60-0)"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
             <TextView
                     style="@style/content"
                     android:id="@+id/line5"
-                    android:textColor="@color/link_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -144,5 +156,81 @@
                     />
         </RelativeLayout>
 
+        <RelativeLayout
+                style="@style/content_root"
+                android:layout_width="fill_parent"
+                >
+
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="缓考"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    style="@style/content"
+                    android:id="@+id/line6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
+                style="@style/content_root"
+                android:layout_width="fill_parent"
+                >
+
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="缺考"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    style="@style/content"
+                    android:id="@+id/line7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
+        <RelativeLayout
+                style="@style/content_root"
+                android:layout_width="fill_parent"
+                >
+
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="舞弊"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    style="@style/content"
+                    android:id="@+id/line8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
     </LinearLayout>
 </ScrollView>
