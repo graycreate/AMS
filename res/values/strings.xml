@@ -14,4 +14,6 @@
     <string name="community">论坛</string>
     <string name="settings">设置</string>
     <string name="basic_info">基本信息</string>
+    <string name="search_hint">以学号、姓名搜索成绩</string>
+    <string name="search">搜索</string>
 </resources>

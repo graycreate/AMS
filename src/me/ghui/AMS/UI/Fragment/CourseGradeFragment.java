@@ -1,5 +1,7 @@
 package me.ghui.AMS.UI.Fragment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -9,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import me.ghui.AMS.R;
 import me.ghui.AMS.UI.Activity.GradesActivity;
+import me.ghui.AMS.UI.Activity.ScoreActivity;
 import me.ghui.AMS.utils.StringHelper;
 import org.jsoup.select.Elements;
 
@@ -28,11 +31,13 @@ public class CourseGradeFragment extends Fragment {
             R.id.line5
     };
     String request_data;
+    private GradesActivity parent;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         pos = getArguments().getInt(POS);
+        parent = (GradesActivity) getActivity();
         Log.e("ghui", "Fragment onCreate pos: " + pos);
     }
 
@@ -40,6 +45,7 @@ public class CourseGradeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.course_grade_fragment, container, false);
         findView();
+        initListener();
         Elements es = ((GradesActivity) getActivity()).es;
         fillData(es);
         return root;
@@ -50,6 +56,25 @@ public class CourseGradeFragment extends Fragment {
         for (int i = 0; i < 5; i++) {
             tvs[i] = (TextView) root.findViewById(ids[i]);
         }
+    }
+
+    private void initListener() {
+        tvs[3].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                parent.showToast("查看原始成绩！");
+            }
+        });
+
+        tvs[4].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                parent.showToast("查看有效成绩！");
+                Intent intent = new Intent(parent, ScoreActivity.class);
+                intent.putExtra("data", request_data);
+                startActivity(intent);
+            }
+        });
     }
 
     private void fillData(Elements es) {
@@ -64,6 +89,7 @@ public class CourseGradeFragment extends Fragment {
             if (i == 4) {
                 String str = elements.get(i).select("a").attr("onclick");
                 request_data = StringHelper.getUrlData(str);
+                Log.e("ghui", "request_data: " + request_data);
             }
         }
     }

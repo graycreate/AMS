@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+        <RelativeLayout
+                style="@style/content_root"
+                android:layout_width="fill_parent"
+                >
+
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="学号"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    android:id="@+id/line1"
+                    style="@style/content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
+                style="@style/content_root"
+                android:layout_width="fill_parent"
+                >
+
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="性别"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    style="@style/content"
+                    android:id="@+id/line2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
+                style="@style/content_root"
+                android:layout_width="fill_parent"
+                >
+
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="成绩"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    style="@style/content"
+                    android:id="@+id/line3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
+                style="@style/content_root"
+                android:layout_width="fill_parent"
+                >
+
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="绩点"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    style="@style/content"
+                    android:id="@+id/line4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
+                style="@style/content_root"
+                android:layout_width="fill_parent"
+                >
+
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="学分绩点"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    style="@style/content"
+                    android:id="@+id/line5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
+                style="@style/content_root"
+                android:layout_width="fill_parent"
+                >
+
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="修读性质"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    style="@style/content"
+                    android:id="@+id/line6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
+        <RelativeLayout
+                style="@style/content_root"
+                android:layout_width="fill_parent"
+                >
+
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="备注"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    style="@style/content"
+                    android:id="@+id/line7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

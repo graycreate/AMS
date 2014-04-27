@@ -38,6 +38,7 @@ public abstract class BaseActivity extends FragmentActivity {
     }
 
     public abstract int getLayoutResourceId();
+
     public abstract void init();
 
     private void initUI() {
@@ -69,7 +70,12 @@ public abstract class BaseActivity extends FragmentActivity {
         });
     }
 
-    public void showToast(String toast) {
-        Toast.makeText(this,toast,Toast.LENGTH_SHORT).show();
+    public void showToast(final String toast) {
+        layout.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(BaseActivity.this, toast, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

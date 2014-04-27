@@ -67,8 +67,25 @@ public class SplashActivity extends BaseActivity {
         }
     }
 
+    private boolean checkForm() {
+        boolean flag = false;
+        if (et_work_id.length() == 0) {
+            showToast("请输入工号!");
+        } else if (et_password.length() == 0) {
+            showToast("请输入密码!");
+        } else if (et_validate_code.length() == 0) {
+            showToast("请输入验证码！");
+        } else {
+            flag = true;
+        }
+        return flag;
+    }
+
     public void login(View view) {
         //start animation...
+        if (!checkForm()) {
+            return;
+        }
         showAnimation();
         User user = new User();
         user.setID(et_work_id.getText().toString())
