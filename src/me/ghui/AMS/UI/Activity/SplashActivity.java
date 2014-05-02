@@ -15,6 +15,7 @@ import me.ghui.AMS.R;
 import me.ghui.AMS.domain.User;
 import me.ghui.AMS.net.NetUtils;
 import me.ghui.AMS.utils.LoginDataHelper;
+import me.ghui.AMS.utils.MyApp;
 import me.ghui.AMS.utils.StringHelper;
 
 /**
@@ -90,6 +91,7 @@ public class SplashActivity extends BaseActivity {
         User user = new User();
         user.setID(et_work_id.getText().toString())
                 .setPassword(et_password.getText().toString()).setValidateCode(et_validate_code.getText().toString());
+        MyApp.userid = user.getID();
         Log.e("ghui", user.toString());
         executeLogin(user);
     }

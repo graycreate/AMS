@@ -7,5 +7,6 @@
     <color name="grey">#d4d4d4</color>
     <color name="link_color">#4F92D2</color>
     <color name="psw_bg_color">#efefef</color>
-
+    <drawable name="list_bg_normal">#E2E0E2</drawable>
+    <drawable name="list_bg_pressed">#14CAD9</drawable>
 </resources>

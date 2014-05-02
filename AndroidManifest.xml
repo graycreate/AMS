@@ -73,7 +73,9 @@
         <activity android:name=".UI.Activity.ScoreStatsDialog"
                   android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar"
                 />
-        <activity android:name=".UI.Activity.InputScoreActivity"/>
+        <activity android:name=".UI.Activity.InputScoreActivity"
+                android:label="成绩录入"
+                />
 
         <provider
                 android:authorities="me.ghui.ams.search.provider"

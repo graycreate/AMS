@@ -16,6 +16,7 @@ import java.util.List;
 public class MyApp extends Application {
     private static List<Activity> list = new LinkedList<Activity>();
     private static MyApp myApp;
+    public static String userid;
 
     @Override
     public void onCreate() {
