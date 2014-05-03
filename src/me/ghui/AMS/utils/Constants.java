@@ -24,5 +24,5 @@ public interface Constants {
     String FINAL_GRADE_INFO_URL = "http://211.84.112.49/lyit/XSCJ/Tea_skbjcj_printyx.aspx";
     String INPUT_GRADE_INFO_URL = "http://211.84.112.49/lyit/XSCJ/Tea_KCCJLR.aspx";
     String INPUT_GRADE_INFO_INDEX_URL = "http://211.84.112.49/lyit/XSCJ/Tea_KCCJLR_rpt.aspx";
-    String INPUT_SCORE_URL = "http://211.84.112.49/lyit/XSCJ/Tea_KCCJLR_add_temp.aspx";
+    String INPUT_SCORE_URL = "http://211.84.112.49/lyit/XSCJ/KCCJ_ADD_rpt_T.aspx";
 }

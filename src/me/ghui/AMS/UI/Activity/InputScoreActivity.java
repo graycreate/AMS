@@ -2,20 +2,19 @@ package me.ghui.AMS.UI.Activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
+import android.widget.*;
 import me.ghui.AMS.R;
 import me.ghui.AMS.net.NetUtils;
 import me.ghui.AMS.utils.Constants;
 import me.ghui.AMS.utils.MyApp;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.HashMap;
@@ -27,13 +26,13 @@ import java.util.Map;
  */
 public class InputScoreActivity extends BaseActivity {
     private ListView listView;
-    String[] datas = new String[3];
+    public static String[] datas = new String[3];
+    public static Elements es;
 
     @Override
     public int getLayoutResourceId() {
         return R.layout.input_score_activity;
     }
-    //   http://211.84.112.49/lyit/XSCJ/KCCJ_ADD_rpt_T.aspx
 
     @Override
     public void init() {
@@ -45,8 +44,20 @@ public class InputScoreActivity extends BaseActivity {
         Log.e("ghui", "new data: " + requestData);
         datas = requestData.split(",");
         listView = (ListView) findViewById(R.id.list);
-        listView.setAdapter(new ScoreAdapter(this));
+        listView.setOnItemClickListener(new MyListViewOnItemClickListener());
         getData();
+    }
+
+    class MyListViewOnItemClickListener implements AdapterView.OnItemClickListener {
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Log.e("ghui", "OnItemClickListener: " + position);
+            Elements es_temp = es.get(position).children();
+            Intent intent = new Intent(InputScoreActivity.this, InputScoreDialog.class);
+            intent.putExtra("studentId",es_temp.get(1).text() );
+            startActivityForResult(intent, 1);
+        }
     }
 
     private void getData() {
@@ -59,8 +70,15 @@ public class InputScoreActivity extends BaseActivity {
                 data.put("sel_kc", datas[1]);
                 data.put("sel_skbj", datas[2]);
                 data.put("hid_user", MyApp.userid);
-                Document doc = NetUtils.postDataToServer(InputScoreActivity.this, "http://211.84.112.49/lyit/XSCJ/KCCJ_ADD_rpt_T.aspx", data);
-                Log.e("ghui", "doc : " + doc.text());
+                Document doc = NetUtils.postDataToServer(InputScoreActivity.this, Constants.INPUT_SCORE_URL, data);
+                es = doc.select("table").get(2).select("tbody").select("tr[onclick=changeRowBgColor(this)]");
+                Log.e("ghui", "es.size: " + es.size());
+                listView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        listView.setAdapter(new ScoreAdapter(InputScoreActivity.this));
+                    }
+                });
                 dismissProgressBar();
             }
         }).start();
@@ -74,12 +92,7 @@ public class InputScoreActivity extends BaseActivity {
             TextView sex;
             TextView id;
             TextView style;
-            TextView score1;
-            TextView score2;
-            TextView score3;
-            TextView score4;
-            TextView score5;
-            TextView remark;
+            TextView input_status;
         }
 
         public ScoreAdapter(Context context) {
@@ -88,7 +101,7 @@ public class InputScoreActivity extends BaseActivity {
 
         @Override
         public int getCount() {
-            return 3;
+            return es == null ? 0 : es.size();
         }
 
         @Override
@@ -111,17 +124,29 @@ public class InputScoreActivity extends BaseActivity {
                 viewHolder.sex = (TextView) convertView.findViewById(R.id.sex_tv);
                 viewHolder.id = (TextView) convertView.findViewById(R.id.id_tv);
                 viewHolder.style = (TextView) convertView.findViewById(R.id.style_tv);
-                viewHolder.score1 = (TextView) convertView.findViewById(R.id.score1);
-                viewHolder.score2 = (TextView) convertView.findViewById(R.id.score2);
-                viewHolder.score3 = (TextView) convertView.findViewById(R.id.score3);
-                viewHolder.score4 = (TextView) convertView.findViewById(R.id.score4);
-                viewHolder.score5 = (TextView) convertView.findViewById(R.id.score5);
-                viewHolder.remark = (TextView) convertView.findViewById(R.id.remark);
+                viewHolder.input_status = (TextView) convertView.findViewById(R.id.input_status);
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
-            viewHolder.name.setText("张三");
+            Elements es_temp = es.get(position).children();
+            viewHolder.id.setText(es_temp.get(1).text());
+            viewHolder.name.setText(es_temp.get(2).text());
+            viewHolder.sex.setText(es_temp.get(3).text());
+            viewHolder.style.setText(es_temp.get(4).text());
+            String readonly = es_temp.get(9).select("input").attr("readonly");
+            String finalScore = es_temp.get(9).select("input").attr("value");
+            Log.e("ghui", "flag = " + readonly);
+            Log.e("ghui", "final score: " + finalScore);
+            if (readonly.equals("true")) {
+                viewHolder.input_status.setText("已录入");
+            } else {
+                if (finalScore.isEmpty()) {
+                    viewHolder.input_status.setText("未录入");
+                } else {
+                    viewHolder.input_status.setText("已暂存");
+                }
+            }
             return convertView;
         }
     }

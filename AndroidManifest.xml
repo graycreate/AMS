@@ -75,6 +75,10 @@
                 />
         <activity android:name=".UI.Activity.InputScoreActivity"
                 android:label="成绩录入"
+                android:screenOrientation="landscape"
+                />
+        <activity android:name=".UI.Activity.InputScoreDialog"
+                  android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar"
                 />
 
         <provider

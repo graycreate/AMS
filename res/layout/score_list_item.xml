@@ -6,166 +6,44 @@
               android:layout_height="match_parent">
 
     <LinearLayout
-            android:padding="5dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-        <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+        <TextView
+                android:id="@+id/name_tv"
+                android:paddingRight="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-            <TextView
-                    android:id="@+id/name_tv"
-                    android:text="张光辉"
-                    android:paddingRight="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+        <TextView
+                android:id="@+id/sex_tv"
+                android:paddingRight="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-            <TextView
-                    android:id="@+id/sex_tv"
-                    android:text="男"
-                    android:paddingRight="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            <TextView
-                    android:id="@+id/style_tv"
-                    android:text="初修"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-        </LinearLayout>
-
-        <LinearLayout
-                android:paddingTop="10dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-
-            <TextView
-                    android:id="@+id/id_tv"
-                    android:singleLine="true"
-                    android:text="B10050607"
-                    android:paddingRight="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-        </LinearLayout>
+        <TextView
+                android:id="@+id/style_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
     </LinearLayout>
 
-    <TableLayout
-            android:padding="5dp"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:layout_width="0dp"
+    <LinearLayout
+            android:paddingTop="10dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-        <TableRow
-                android:weightSum="6"
-                android:gravity="center"
-                >
+        <TextView
+                android:id="@+id/id_tv"
+                android:singleLine="true"
+                android:paddingRight="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-            <TextView
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:text="平时"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <TextView
+            android:id="@+id/input_status"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:text="未录入"
+            />
 
-            <TextView
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:text="中考"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            <TextView
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:text="末考"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            <TextView
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:text="技能"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            <TextView
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:text="综合"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            <TextView
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:text="备注"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-        </TableRow>
-
-        <TableRow
-                android:paddingTop="10dp"
-                android:weightSum="6"
-                android:gravity="center"
-                >
-
-            <TextView
-                    android:maxLength="3"
-                    android:gravity="center"
-                    android:id="@+id/score1"
-                    android:layout_weight="1"
-                    android:text="18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            <TextView
-                    android:maxLength="3"
-                    android:gravity="center"
-                    android:id="@+id/score2"
-                    android:layout_weight="1"
-                    android:text="70"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            <TextView
-                    android:maxLength="3"
-                    android:gravity="center"
-                    android:id="@+id/score3"
-                    android:layout_weight="1"
-                    android:text="76"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            <TextView
-                    android:maxLength="3"
-                    android:gravity="center"
-                    android:id="@+id/score4"
-                    android:layout_weight="1"
-                    android:text="9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            <TextView
-                    android:maxLength="3"
-                    android:gravity="center"
-                    android:id="@+id/score5"
-                    android:layout_weight="1"
-                    android:text="88"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            <TextView
-                    android:gravity="center"
-                    android:id="@+id/remark"
-                    android:layout_weight="1"
-                    android:text="缺考"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-        </TableRow>
-    </TableLayout>
 </LinearLayout>
