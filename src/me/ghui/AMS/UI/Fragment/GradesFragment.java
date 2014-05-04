@@ -62,7 +62,7 @@ public class GradesFragment extends Fragment {
         tvs[6].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                parent.showToast("录入成绩");
+                parent.showToast("数据量大,请稍后...");
                 Intent intent = new Intent(parent, InputScoreActivity.class);
                 intent.putExtra("data", request_data);
                 startActivity(intent);

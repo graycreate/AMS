@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import me.ghui.AMS.R;
 import me.ghui.AMS.net.NetUtils;
 import me.ghui.AMS.utils.Constants;
@@ -24,14 +25,19 @@ public class InputScoreDialog extends BaseActivity {
     EditText score3_et;
     EditText score4_et;
     EditText score5_et;
+
+    TextView name_tv,id_tv,input_status_tv;
+
     String refer = "http://211.84.112.49/lyit/XSCJ/KCCJ_ADD_rpt_T.aspx";
     String student_id;
+    String input_status;
     Elements es;
     Elements element_input;
     private Spinner remark_spinner;
     private String[] strings = {"", "舞弊", "缺考", "缓考", "取消考试资格", "免修"};
     private String[] values = {"","01|0.00|","02|0.00|","03||","04|0.00|","05|65.02|1"};
     HashMap<String, String> datas = new HashMap<String, String>();
+    private String name;
 
     @Override
     public int getLayoutResourceId() {
@@ -42,11 +48,18 @@ public class InputScoreDialog extends BaseActivity {
     public void init() {
         findView();
         student_id = getIntent().getStringExtra("studentId");
+        input_status = getIntent().getStringExtra("input_status");
+        name = getIntent().getStringExtra("name");
         Log.e("ghui", "studentId: " + student_id);
+        Log.e("ghui", "status: " + input_status);
+        Log.e("ghui", "name: " + name);
         getData();
     }
 
     private void initView() {
+        input_status_tv.setText(input_status);
+        name_tv.setText(name);
+        id_tv.setText(student_id);
         Elements et_temp = element_input.select("td[class=CJTD]").select("input");
         String remark = element_input.get(11).text();
         Log.e("ghui", "remark: " + remark);
@@ -121,6 +134,9 @@ public class InputScoreDialog extends BaseActivity {
         score3_et = (EditText) findViewById(R.id.score3_et);
         score4_et = (EditText) findViewById(R.id.score4_et);
         score5_et = (EditText) findViewById(R.id.score5_et);
+        name_tv = (TextView) findViewById(R.id.name_tv);
+        id_tv = (TextView) findViewById(R.id.id_tv);
+        input_status_tv = (TextView) findViewById(R.id.input_status);
         remark_spinner = (Spinner) findViewById(R.id.remark_spinner);
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.spinner_item, strings);
         remark_spinner.setAdapter(arrayAdapter);
@@ -150,6 +166,12 @@ public class InputScoreDialog extends BaseActivity {
                     @Override
                     public void run() {
                         initView();
+                        findViewById(R.id.root).setVisibility(View.VISIBLE);
+                        if (input_status.contains("已录入")) {
+                            findViewById(R.id.ok_btn).setEnabled(false);
+                        } else {
+                            findViewById(R.id.ok_btn).setEnabled(true);
+                        }
                     }
                 });
                 dismissProgressBar();
@@ -176,7 +198,19 @@ public class InputScoreDialog extends BaseActivity {
                 datas.put("sel_QMTSQK1", values[remark_spinner.getSelectedItemPosition()]);
                 Log.e("ghui", "datas: " +datas);
                 Document doc = NetUtils.postDataToServer(InputScoreDialog.this, "http://211.84.112.49/lyit/XSCJ/KCCJ_ADD_rpt_T.aspx?f=ok",datas, refer);
-                Log.e("ghui", "insert doc: " + doc.text());
+                Log.e("ghui", "insert doc: " + doc);
+                final String response;
+                if (doc.toString().contains("1人成绩已经成功提交")) {
+                    response = "录入成功！";
+                } else {
+                    response = "录入失败";
+                }
+                score1_et.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        showToast(response);
+                    }
+                });
                 dismissProgressBar();
             }
         }).start();

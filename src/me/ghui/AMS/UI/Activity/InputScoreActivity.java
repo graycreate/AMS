@@ -17,6 +17,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +29,8 @@ public class InputScoreActivity extends BaseActivity {
     private ListView listView;
     public static String[] datas = new String[3];
     public static Elements es;
+    private ArrayList<String> status = new ArrayList<String>();
+    private ArrayList<String> name = new ArrayList<String>();
 
     @Override
     public int getLayoutResourceId() {
@@ -56,6 +59,8 @@ public class InputScoreActivity extends BaseActivity {
             Elements es_temp = es.get(position).children();
             Intent intent = new Intent(InputScoreActivity.this, InputScoreDialog.class);
             intent.putExtra("studentId",es_temp.get(1).text() );
+            intent.putExtra("input_status",status.get(position));
+            intent.putExtra("name",name.get(position));
             startActivityForResult(intent, 1);
         }
     }
@@ -138,12 +143,16 @@ public class InputScoreActivity extends BaseActivity {
             String finalScore = es_temp.get(9).select("input").attr("value");
             Log.e("ghui", "flag = " + readonly);
             Log.e("ghui", "final score: " + finalScore);
+            name.add(position,es_temp.get(2).text());
             if (readonly.equals("true")) {
                 viewHolder.input_status.setText("已录入");
+                status.add(position,"已录入");
             } else {
                 if (finalScore.isEmpty()) {
+                    status.add(position,"未录入");
                     viewHolder.input_status.setText("未录入");
                 } else {
+                    status.add(position,"已暂存");
                     viewHolder.input_status.setText("已暂存");
                 }
             }
