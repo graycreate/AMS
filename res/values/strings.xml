@@ -17,4 +17,6 @@
     <string name="search_hint">键入学号或姓名</string>
     <string name="search">搜索</string>
     <string name="score_summary">统计</string>
+    <string name="input_score">录入成绩</string>
+    <string name="view_score">查看成绩</string>
 </resources>

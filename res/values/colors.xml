@@ -6,6 +6,9 @@
     <color name="btn_pressed_color">#0B294D</color>
     <color name="grey">#d4d4d4</color>
     <color name="link_color">#4F92D2</color>
+    <color name="green">#008D14</color>
+    <color name="red">#EC4D48</color>
+    <color name="black">#000000</color>
     <color name="psw_bg_color">#efefef</color>
     <drawable name="list_bg_normal">#E2E0E2</drawable>
     <drawable name="list_bg_pressed">#14CAD9</drawable>

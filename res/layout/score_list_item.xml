@@ -1,39 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="horizontal"
+              android:layout_marginLeft="20dp"
+              android:layout_marginRight="20dp"
+              android:layout_marginTop="15dp"
               android:weightSum="3"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="wrap_content">
 
-    <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+           android:paddingLeft="5dp" android:orientation="vertical" android:paddingBottom="5dp">
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView
+                    android:id="@+id/name_tv"
+                    android:paddingRight="5dp"
+                    android:text="张光辉"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
-        <TextView
-                android:id="@+id/name_tv"
-                android:paddingRight="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            <TextView
+                    android:id="@+id/sex_tv"
+                    android:paddingRight="5dp"
+                    android:text="男"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
-        <TextView
-                android:id="@+id/sex_tv"
-                android:paddingRight="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        <TextView
-                android:id="@+id/style_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-    </LinearLayout>
-
-    <LinearLayout
-            android:paddingTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        </LinearLayout>
 
         <TextView
                 android:id="@+id/id_tv"
+                android:text="B10050607"
+                android:paddingTop="5dp"
                 android:singleLine="true"
                 android:paddingRight="5dp"
                 android:layout_width="wrap_content"
@@ -41,9 +39,20 @@
 
     </LinearLayout>
     <TextView
+            android:id="@+id/style_tv"
+            android:layout_marginLeft="20dp"
+            android:text="初修"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/red"
+            android:layout_marginLeft="20dp"
             android:id="@+id/input_status"
             android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:text="未录入"
+            android:text="未录入"
             />
 
 </LinearLayout>

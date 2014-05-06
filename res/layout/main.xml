@@ -22,8 +22,8 @@
         <TextView
                 android:id="@+id/tv_teaching_task"
                 style="@style/GridView_TV"
-                android:text="@string/teaching_task"
-                android:onClick="toggleExtendMenu1"
+                android:text="承担课程"
+                android:onClick="gotoCourseActivity"
                 android:layout_centerHorizontal="true"
                 android:drawableTop="@drawable/ic_launcher"
                 />
@@ -39,25 +39,6 @@
                 />
     </RelativeLayout>
 
-    <LinearLayout
-            android:id="@+id/extend_menu_1"
-            android:visibility="gone"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="60dp">
-        <TextView
-                android:id="@+id/tv_course"
-                android:text="承担课程"
-                android:onClick="gotoCourseActivity"
-                style="@style/tv_extend"
-                />
-        <TextView
-                android:id="@+id/tv_progress"
-                style="@style/tv_extend"
-                android:text="指导环节"
-                />
-    </LinearLayout>
-
     <RelativeLayout
             style="@style/gridview_root"
             android:layout_width="match_parent"
@@ -66,17 +47,18 @@
         <TextView
                 android:id="@+id/tv_student_mark"
                 style="@style/GridView_TV"
-                android:text="@string/student_mark"
-                android:onClick="toggleExtendMenu2"
+                android:text="@string/view_score"
+                android:onClick="gotoGradesActivity"
                 android:layout_alignParentLeft="true"
                 android:drawableTop="@drawable/ic_launcher"
                 />
 
         <TextView
-                android:id="@+id/tv_community"
+                android:id="@+id/input_grades_tv"
                 style="@style/GridView_TV"
-                android:text="@string/community"
+                android:text="@string/input_score"
                 android:layout_centerHorizontal="true"
+                android:onClick="gotoInputGradesActivity"
                 android:drawableTop="@drawable/ic_launcher"
                 />
 
@@ -90,25 +72,6 @@
                 android:onClick="gotoOthersActivity"
                 />
     </RelativeLayout>
-    <LinearLayout
-            android:id="@+id/extend_menu_2"
-            android:visibility="gone"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="60dp">
-        <TextView
-                android:id="@+id/tv_check_grades"
-                android:text="查看成绩"
-                android:onClick="gotoGradesActivity"
-                style="@style/tv_extend"
-                />
-        <TextView
-                android:id="@+id/tv_input_grades"
-                android:onClick="gotoInputGradesActivity"
-                style="@style/tv_extend"
-                android:text="录入成绩"
-                />
-    </LinearLayout>
 
     <RelativeLayout
             style="@style/gridview_root"

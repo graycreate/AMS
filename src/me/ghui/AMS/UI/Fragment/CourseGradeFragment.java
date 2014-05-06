@@ -59,19 +59,13 @@ public class CourseGradeFragment extends Fragment {
     }
 
     private void initListener() {
-        tvs[3].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                parent.showToast("查看原始成绩！");
-            }
-        });
-
         tvs[4].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(parent, ScoreActivity.class);
                 intent.putExtra("data", request_data);
                 startActivity(intent);
+                parent.finish();
             }
         });
     }

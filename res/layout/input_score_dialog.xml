@@ -26,25 +26,25 @@
                 android:layout_height="2dp"
                 android:background="@android:color/black"
                 />
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-              android:layout_marginLeft="10dp" android:layout_marginTop="5dp"
-        >
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-             android:text="张光辉" android:textStyle="bold" android:id="@+id/name_tv"
-            />
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-               android:text="(B10050607)" android:layout_marginLeft="5dp" android:id="@+id/id_tv"
-            />
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            />
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:layout_marginLeft="20dp"
-               android:text="录入状态: "
-            />
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:layout_marginLeft="5dp" android:textStyle="bold" android:id="@+id/input_status"
-              android:text=""/>
-</LinearLayout>
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                      android:layout_marginLeft="10dp" android:layout_marginTop="5dp"
+                >
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="张光辉" android:textStyle="bold" android:id="@+id/name_tv"
+                    />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="(B10050607)" android:layout_marginLeft="5dp" android:id="@+id/id_tv"
+                    />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:layout_marginLeft="20dp"
+                      android:text="录入状态: "
+                    />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:layout_marginLeft="5dp" android:textStyle="bold" android:id="@+id/input_status"
+                      android:text=""/>
+        </LinearLayout>
         <View
                 android:layout_marginTop="5dp"
                 android:layout_alignParentBottom="true"
@@ -53,7 +53,7 @@
                 android:background="@android:color/darker_gray"
                 />
         <RelativeLayout
-                style="@style/content_root"
+                style="@style/content_root_inputscore"
                 android:layout_width="fill_parent"
                 >
 
@@ -65,8 +65,11 @@
 
             <EditText
                     android:id="@+id/score1_et"
+                    android:maxLength="6"
                     android:layout_alignParentRight="true"
+                    android:inputType="numberDecimal"
                     android:singleLine="true"
+                    android:minWidth="60dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -80,7 +83,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-                style="@style/content_root"
+                style="@style/content_root_inputscore"
                 android:layout_width="fill_parent"
                 >
 
@@ -91,6 +94,9 @@
                     android:layout_height="wrap_content"/>
 
             <EditText
+                    android:maxLength="6"
+                    android:inputType="numberDecimal"
+                    android:minWidth="60dp"
                     android:id="@+id/score2_et"
                     android:layout_alignParentRight="true"
                     android:singleLine="true"
@@ -106,7 +112,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-                style="@style/content_root"
+                style="@style/content_root_inputscore"
                 android:layout_width="fill_parent"
                 >
 
@@ -117,6 +123,9 @@
                     android:layout_height="wrap_content"/>
 
             <EditText
+                    android:maxLength="6"
+                    android:inputType="numberDecimal"
+                    android:minWidth="60dp"
                     android:id="@+id/score3_et"
                     android:layout_alignParentRight="true"
                     android:singleLine="true"
@@ -132,7 +141,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-                style="@style/content_root"
+                style="@style/content_root_inputscore"
                 android:layout_width="fill_parent"
                 >
 
@@ -143,6 +152,9 @@
                     android:layout_height="wrap_content"/>
 
             <EditText
+                    android:maxLength="6"
+                    android:inputType="numberDecimal"
+                    android:minWidth="60dp"
                     android:id="@+id/score4_et"
                     android:layout_alignParentRight="true"
                     android:singleLine="true"
@@ -157,7 +169,7 @@
                     />
         </RelativeLayout>
         <RelativeLayout
-                style="@style/content_root"
+                style="@style/content_root_inputscore"
                 android:layout_width="fill_parent"
                 >
 
@@ -168,6 +180,9 @@
                     android:layout_height="wrap_content"/>
 
             <EditText
+                    android:maxLength="6"
+                    android:inputType="numberDecimal"
+                    android:minWidth="60dp"
                     android:id="@+id/score5_et"
                     android:layout_alignParentRight="true"
                     android:singleLine="true"
@@ -182,7 +197,7 @@
                     />
         </RelativeLayout>
         <RelativeLayout
-                style="@style/content_root"
+                style="@style/content_root_inputscore"
                 android:layout_width="fill_parent"
                 >
 
@@ -208,10 +223,31 @@
                     android:background="@android:color/darker_gray"
                     />
         </RelativeLayout>
+        <RelativeLayout
+                style="@style/content_root_inputscore"
+                android:layout_width="fill_parent"
+                >
+            <TextView
+                    style="@style/self_info_item"
+                    android:text="暂存"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            <CheckBox android:layout_width="wrap_content"
+                      android:id="@+id/onlysava_cb"
+                      android:layout_alignParentRight="true"
+                      android:layout_height="wrap_content"/>
+            <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@android:color/darker_gray"
+                    />
+        </RelativeLayout>
 
         <LinearLayout
                 android:weightSum="2"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
@@ -227,7 +263,7 @@
                     android:layout_width="fill_parent"
                     android:background="@drawable/selecor_btn"
                     android:layout_marginRight="10dp"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="35dp"/>
             <Button
                     android:layout_weight="1"
                     android:layout_marginLeft="10dp"
@@ -236,7 +272,7 @@
                     android:onClick="cancle_OnClick"
                     android:background="@drawable/selecor_btn"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="35dp"/>
 
         </LinearLayout>
 

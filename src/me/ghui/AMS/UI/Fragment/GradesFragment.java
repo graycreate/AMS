@@ -62,10 +62,15 @@ public class GradesFragment extends Fragment {
         tvs[6].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (tvs[5].getText().toString().equals("0")) {
+                    parent.showToast("无未录成绩,无需进行成绩录入");
+                    return;
+                }
                 parent.showToast("数据量大,请稍后...");
                 Intent intent = new Intent(parent, InputScoreActivity.class);
                 intent.putExtra("data", request_data);
                 startActivity(intent);
+                parent.finish();
             }
         });
     }

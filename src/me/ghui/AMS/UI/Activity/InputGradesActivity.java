@@ -36,13 +36,20 @@ public class InputGradesActivity extends BaseActivity {
     private ArrayList<String> strings;
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e("ghui", "onDestroy");
+    }
+
+    @Override
     public int getLayoutResourceId() {
         return R.layout.input_grades;
     }
 
     @Override
     public void init() {
-        initFragments();
+//        initFragments();
+        mPager = (ViewPager) findViewById(R.id.vPager);
         strings = new ArrayList<String>();
         values = new ArrayList<String>();
         spinner = (Spinner) findViewById(R.id.spinner);
@@ -70,6 +77,7 @@ public class InputGradesActivity extends BaseActivity {
                 mPager.post(new Runnable() {
                     @Override
                     public void run() {
+                        initFragments();
                         findViewById(R.id.pager_title_strip).setVisibility(View.VISIBLE);
                         mPager.setAdapter(pagerAdapter);
                     }
@@ -109,7 +117,6 @@ public class InputGradesActivity extends BaseActivity {
 
 
     private void initFragments() {
-        mPager = (ViewPager) findViewById(R.id.vPager);
         mPager.setPageTransformer(true, new ZoomOutPageTransformer());
 //        mPager.setPageTransformer(true, new DepthPageTransformer());
         pagerAdapter = new FragmentStatePagerAdapter(getSupportFragmentManager()) {

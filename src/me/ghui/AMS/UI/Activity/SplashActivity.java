@@ -152,8 +152,18 @@ public class SplashActivity extends BaseActivity {
         }).start();
     }
 
+    long time0;
+    public void refreshValidateCode_OnClick(View view) {
+        if (System.currentTimeMillis() - time0 > 2000) {
+            time0 = System.currentTimeMillis();
+            showInvalidateCode();
+        } else {
+            showToast("正在刷新,请稍后...");
+        }
+    }
 
     private void showInvalidateCode() {
+        img_validatecode.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
         new Thread(new Runnable() {
             @Override

@@ -1,26 +1,26 @@
 package me.ghui.AMS.UI.Activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 import me.ghui.AMS.R;
 import me.ghui.AMS.net.NetUtils;
 import me.ghui.AMS.utils.Constants;
 import me.ghui.AMS.utils.MyApp;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by ghui on 4/29/14.
@@ -28,11 +28,25 @@ import java.util.Map;
 public class InputScoreActivity extends BaseActivity {
     private ListView listView;
     public static String[] datas = new String[3];
-    public static Elements es;
-    private ArrayList<String> status = new ArrayList<String>();
-    private ArrayList<String> name = new ArrayList<String>();
+    private List<HashMap<String, String>> datum = new ArrayList<HashMap<String, String>>();
+    private ScoreAdapter scoreAdapter;
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.e("ghui", "onActivityResult");
+        String text = null;
+        int pos = requestCode;
+        if (data == null) {
+            return;
+        }
+        String input_status = data.getStringExtra("input_status"); //0:haven't insert, 1: insert, 2: only save
+        datum.get(pos).put("status", input_status);
+        scoreAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+
     public int getLayoutResourceId() {
         return R.layout.input_score_activity;
     }
@@ -56,12 +70,11 @@ public class InputScoreActivity extends BaseActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Log.e("ghui", "OnItemClickListener: " + position);
-            Elements es_temp = es.get(position).children();
             Intent intent = new Intent(InputScoreActivity.this, InputScoreDialog.class);
-            intent.putExtra("studentId",es_temp.get(1).text() );
-            intent.putExtra("input_status",status.get(position));
-            intent.putExtra("name",name.get(position));
-            startActivityForResult(intent, 1);
+            intent.putExtra("studentId", datum.get(position).get("id"));
+            intent.putExtra("input_status", datum.get(position).get("status"));
+            intent.putExtra("name", datum.get(position).get("name"));
+            startActivityForResult(intent, position);
         }
     }
 
@@ -76,12 +89,36 @@ public class InputScoreActivity extends BaseActivity {
                 data.put("sel_skbj", datas[2]);
                 data.put("hid_user", MyApp.userid);
                 Document doc = NetUtils.postDataToServer(InputScoreActivity.this, Constants.INPUT_SCORE_URL, data);
-                es = doc.select("table").get(2).select("tbody").select("tr[onclick=changeRowBgColor(this)]");
-                Log.e("ghui", "es.size: " + es.size());
+                Elements es = doc.select("table").get(2).select("tbody").select("tr[onclick=changeRowBgColor(this)]");
+                Elements es_temp;
+                String status = null;
+                for (int i=0;i<es.size();i++) {
+                    es_temp = es.get(i).children();
+                    HashMap<String, String> maps = new HashMap<String, String>();
+                    maps.put("id", es_temp.get(1).text());
+                    maps.put("name", es_temp.get(2).text());
+                    maps.put("sex", es_temp.get(3).text());
+                    maps.put("style", es_temp.get(4).text());
+                    String readonly = es_temp.get(9).select("input").attr("readonly");
+                    String finalScore = es_temp.get(9).select("input").attr("value");
+                    if (readonly.equals("true")) {
+                        status = "已录入";
+                    } else {
+                        if (finalScore.isEmpty()) {
+                            status = "未录入";
+                        } else {
+                            status = "已暂存";
+                        }
+                    }
+                    maps.put("status", status);
+                    datum.add(i, maps);
+                }
+
                 listView.post(new Runnable() {
                     @Override
                     public void run() {
-                        listView.setAdapter(new ScoreAdapter(InputScoreActivity.this));
+                        scoreAdapter = new ScoreAdapter(InputScoreActivity.this);
+                        listView.setAdapter(scoreAdapter);
                     }
                 });
                 dismissProgressBar();
@@ -106,7 +143,7 @@ public class InputScoreActivity extends BaseActivity {
 
         @Override
         public int getCount() {
-            return es == null ? 0 : es.size();
+            return datum.size();
         }
 
         @Override
@@ -134,28 +171,27 @@ public class InputScoreActivity extends BaseActivity {
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
-            Elements es_temp = es.get(position).children();
-            viewHolder.id.setText(es_temp.get(1).text());
-            viewHolder.name.setText(es_temp.get(2).text());
-            viewHolder.sex.setText(es_temp.get(3).text());
-            viewHolder.style.setText(es_temp.get(4).text());
-            String readonly = es_temp.get(9).select("input").attr("readonly");
-            String finalScore = es_temp.get(9).select("input").attr("value");
-            Log.e("ghui", "flag = " + readonly);
-            Log.e("ghui", "final score: " + finalScore);
-            name.add(position,es_temp.get(2).text());
-            if (readonly.equals("true")) {
-                viewHolder.input_status.setText("已录入");
-                status.add(position,"已录入");
+            if (position % 2 == 0) {
+                convertView.setBackgroundColor(getResources().getColor(R.color.grey));
             } else {
-                if (finalScore.isEmpty()) {
-                    status.add(position,"未录入");
-                    viewHolder.input_status.setText("未录入");
-                } else {
-                    status.add(position,"已暂存");
-                    viewHolder.input_status.setText("已暂存");
-                }
+                convertView.setBackgroundColor(Color.WHITE);
             }
+            HashMap<String, String> maps = datum.get(position);
+            viewHolder.id.setText(maps.get("id"));
+            viewHolder.name.setText(maps.get("name"));
+            viewHolder.sex.setText(maps.get("sex"));
+            viewHolder.style.setText(maps.get("style"));
+            String status = maps.get("status");
+            int color;
+            if (status.contains("已录入")) {
+                color = Color.BLACK;
+            } else if (status.contains("已暂存")) {
+                color = Color.GREEN;
+            } else {
+                color = Color.RED;
+            }
+            viewHolder.input_status.setTextColor(color);
+            viewHolder.input_status.setText(status);
             return convertView;
         }
     }
