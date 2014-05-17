@@ -12,6 +12,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
+        <View android:layout_width="fill_parent" android:layout_height="1dp"
+              android:background="@color/main_color"/>
         <RelativeLayout
                 style="@style/content_root"
                 android:layout_width="fill_parent"

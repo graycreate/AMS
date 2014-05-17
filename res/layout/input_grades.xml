@@ -33,9 +33,8 @@
                 android:id="@+id/pager_title_strip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/main_color"
                 android:layout_gravity="top"
-                android:background="@android:color/darker_gray"
-                android:textColor="#fff"
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"/>
     </android.support.v4.view.ViewPager>

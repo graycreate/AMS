@@ -4,6 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -16,6 +20,7 @@ import me.ghui.AMS.domain.User;
 import me.ghui.AMS.net.NetUtils;
 import me.ghui.AMS.utils.LoginDataHelper;
 import me.ghui.AMS.utils.MyApp;
+import me.ghui.AMS.utils.PrefsUtils;
 import me.ghui.AMS.utils.StringHelper;
 
 /**
@@ -29,6 +34,7 @@ public class SplashActivity extends BaseActivity {
     EditText et_password;
     EditText et_validate_code;
     ProgressBar progressBar;
+    private User user;
 
     @Override
     public int getLayoutResourceId() {
@@ -50,15 +56,38 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void initUI() {
+        User user_local = PrefsUtils.getUserInfoSharedPrefs(this);
         layout = (LinearLayout) findViewById(R.id.layout_login);
         logo = (ImageView) findViewById(R.id.img_logo);
         img_validatecode = (ImageView) findViewById(R.id.img_validatecode);
         et_work_id = (EditText) findViewById(R.id.et_work_id);
         et_work_id.setSelection(et_work_id.length());
         et_password = (EditText) findViewById(R.id.et_password);
+        //restore login form from local prefs
+        et_work_id.setText(user_local.getID());
+        et_password.setText(user_local.getPassword());
         et_validate_code = (EditText) findViewById(R.id.et_validate_code);
         progressBar = (ProgressBar) findViewById(R.id.pb_validate);
         StringHelper.toUpcase(et_validate_code);
+        et_work_id.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //clear psw if the user changed
+                et_password.setText("");
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
         showInvalidateCode();
     }
 
@@ -88,7 +117,7 @@ public class SplashActivity extends BaseActivity {
             return;
         }
         showAnimation();
-        User user = new User();
+        user = new User();
         user.setID(et_work_id.getText().toString())
                 .setPassword(et_password.getText().toString()).setValidateCode(et_validate_code.getText().toString());
         MyApp.userid = user.getID();
@@ -142,6 +171,9 @@ public class SplashActivity extends BaseActivity {
                             layout.setVisibility(View.VISIBLE);
                             return;
                         }
+                        //login success ,save the username and psw to sharepreferences
+                        PrefsUtils.saveUserInfoToSharedPrefs(SplashActivity.this, user.getID(), user.getPassword());
+
                         logo.setVisibility(View.GONE);
                         startActivity(new Intent(SplashActivity.this, MainActivity.class));
                         overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);

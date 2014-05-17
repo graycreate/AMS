@@ -15,7 +15,7 @@
                 style="@style/GridView_TV"
                 android:text="@string/self_info"
                 android:layout_alignParentLeft="true"
-                android:drawableTop="@drawable/ic_launcher"
+                android:drawableTop="@drawable/selecor_personal_info"
                 android:onClick="gotoSelfInfoActivity"
                 />
 
@@ -25,7 +25,7 @@
                 android:text="承担课程"
                 android:onClick="gotoCourseActivity"
                 android:layout_centerHorizontal="true"
-                android:drawableTop="@drawable/ic_launcher"
+                android:drawableTop="@drawable/selecor_my_course"
                 />
 
         <TextView
@@ -35,7 +35,7 @@
                 android:text="@string/teaching_plan"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="right"
-                android:drawableTop="@drawable/ic_launcher"
+                android:drawableTop="@drawable/teach_plan_normal"
                 />
     </RelativeLayout>
 
@@ -50,7 +50,7 @@
                 android:text="@string/view_score"
                 android:onClick="gotoGradesActivity"
                 android:layout_alignParentLeft="true"
-                android:drawableTop="@drawable/ic_launcher"
+                android:drawableTop="@drawable/search_score_normal"
                 />
 
         <TextView
@@ -59,7 +59,7 @@
                 android:text="@string/input_score"
                 android:layout_centerHorizontal="true"
                 android:onClick="gotoInputGradesActivity"
-                android:drawableTop="@drawable/ic_launcher"
+                android:drawableTop="@drawable/inser_score_normal"
                 />
 
         <TextView
@@ -68,7 +68,7 @@
                 android:text="密码修改"
                 android:layout_gravity="right"
                 android:layout_alignParentRight="true"
-                android:drawableTop="@drawable/ic_launcher"
+                android:drawableTop="@drawable/selecor_modify_psw"
                 android:onClick="gotoOthersActivity"
                 />
     </RelativeLayout>
@@ -82,7 +82,8 @@
                 android:id="@+id/tv_settings"
                 android:text="@string/settings"
                 style="@style/GridView_TV"
-                android:drawableTop="@drawable/ic_launcher"
+                android:onClick="gotoSettingsActivity_OnClick"
+                android:drawableTop="@drawable/selecor_settings"
                 />
     </RelativeLayout>
 </LinearLayout>

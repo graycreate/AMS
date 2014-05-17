@@ -3,6 +3,7 @@ package me.ghui.AMS.UI.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -10,7 +11,9 @@ import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.*;
+import android.widget.EditText;
 import android.widget.SearchView;
+import android.widget.TextView;
 import me.ghui.AMS.R;
 import me.ghui.AMS.UI.Animation.ZoomOutPageTransformer;
 import me.ghui.AMS.UI.Fragment.ScoreListFragment;
@@ -195,6 +198,12 @@ public class ScoreActivity extends BaseActivity {
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        //Applies white color on searchview text
+        int id = searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
+//        EditText editText = (EditText) searchView.findViewById(id);
+//        editText.setTextColor(Color.WHITE);
+//        editText.setHintTextColor(Color.WHITE);
+//        editText.setCursorVisible(false);
         return super.onCreateOptionsMenu(menu);
     }
 }

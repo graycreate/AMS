@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+            android:title="账户"
+            >
+        <Preference
+                android:key="pref_user"
+                android:summary="B10050607"
+                android:title="Name"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+            android:title="登录设置"
+            android:key="pref_key_storage_settings">
+        <CheckBoxPreference
+                android:key="pref_auto_psw"
+                android:defaultValue="true"
+                android:summary="自动填入上次登入的密码"
+                android:title="记住密码"/>
+        <CheckBoxPreference
+                android:defaultValue="false"
+                android:summary="定时连接服务器,防止长时间不操作应用掉线"
+                android:title="保持登录"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+            android:title="通用"
+            android:key="pref_key_storage_settings">
+        <ListPreference
+                android:title="屏幕方向"
+                android:key="pref_screen_oritentation"
+                android:dialogTitle="屏幕方向"/>
+        <!--android:entries="@array/pref_syncConnectionTypes_entries"-->
+        <!--android:entryValues="@array/pref_syncConnectionTypes_values"-->
+        <!--android:defaultValue="@string/pref_syncConnectionTypes_default"-->
+        <!--/>-->
+    </PreferenceCategory>
+    <PreferenceCategory
+            android:title="其它"
+            android:key="pref_key_storage_settings">
+        <Preference
+                android:title="关于"/>
+    </PreferenceCategory>
+</PreferenceScreen>

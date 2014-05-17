@@ -19,4 +19,5 @@
     <string name="score_summary">统计</string>
     <string name="input_score">录入成绩</string>
     <string name="view_score">查看成绩</string>
+    <string name="Settings">设置</string>
 </resources>

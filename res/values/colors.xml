@@ -9,6 +9,7 @@
     <color name="green">#008D14</color>
     <color name="red">#EC4D48</color>
     <color name="black">#000000</color>
+    <color name="actionbarbg">#065B9B</color>
     <color name="psw_bg_color">#efefef</color>
     <drawable name="list_bg_normal">#E2E0E2</drawable>
     <drawable name="list_bg_pressed">#14CAD9</drawable>

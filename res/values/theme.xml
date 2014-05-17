@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomActionbarTheme" parent="android:Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/AMSActionbar</item>
+    </style>
+    <style name="AMSActionbar" parent="android:Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/main_color_bg</item>
+        <!--<item name="android:windowBackground">@color/main_color_bg</item>-->
+        <!--<item name="android:colorBackground">@color/main_color_bg</item>-->
+        <!--<item name="android:titleTextStyle">@style/MyActionBarTitleText</item>-->
+        <!--<item name="android:actionMenuTextColor">@android:color/white</item>-->
+        <!--<item name="android:editTextColor">@android:color/white</item>-->
+        <!--<item name="android:textColorHint">@android:color/white</item>-->
+    </style>
+    <!-- ActionBar title text -->
+    <style name="MyActionBarTitleText"
+           parent="android:TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+</resources>
