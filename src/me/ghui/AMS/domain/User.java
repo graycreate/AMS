@@ -12,7 +12,18 @@ import java.util.HashMap;
  * Created by ghui on 3/25/14.
  */
 public class User {
+
     private String ID;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    private String name;
 
     public String getID() {
         return ID;
@@ -36,6 +47,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "ID='" + ID + '\'' +
+                ", name='" + name + '\'' +
                 ", Password='" + Password + '\'' +
                 ", ValidateCode='" + ValidateCode + '\'' +
                 '}';

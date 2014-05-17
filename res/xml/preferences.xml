@@ -6,8 +6,8 @@
             >
         <Preference
                 android:key="pref_user"
-                android:summary="B10050607"
-                android:title="Name"/>
+                android:summary="点击登入"
+                android:title="未登入"/>
     </PreferenceCategory>
     <PreferenceCategory
             android:title="登录设置"
@@ -19,25 +19,29 @@
                 android:title="记住密码"/>
         <CheckBoxPreference
                 android:defaultValue="false"
+                android:key="pref_keep_alive"
                 android:summary="定时连接服务器,防止长时间不操作应用掉线"
                 android:title="保持登录"/>
     </PreferenceCategory>
     <PreferenceCategory
             android:title="通用"
             android:key="pref_key_storage_settings">
-        <ListPreference
+        <me.ghui.AMS.UI.View.ListPreferenceCompat
                 android:title="屏幕方向"
                 android:key="pref_screen_oritentation"
-                android:dialogTitle="屏幕方向"/>
-        <!--android:entries="@array/pref_syncConnectionTypes_entries"-->
-        <!--android:entryValues="@array/pref_syncConnectionTypes_values"-->
-        <!--android:defaultValue="@string/pref_syncConnectionTypes_default"-->
-        <!--/>-->
+                android:dialogTitle="屏幕方向"
+                android:summary="%s"
+                android:entries="@array/listentries"
+                android:entryValues="@array/listvalues"
+                android:defaultValue="0"
+                />
+
     </PreferenceCategory>
     <PreferenceCategory
             android:title="其它"
             android:key="pref_key_storage_settings">
         <Preference
+                android:key="pref_about"
                 android:title="关于"/>
     </PreferenceCategory>
 </PreferenceScreen>

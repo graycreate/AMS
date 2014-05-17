@@ -6,6 +6,12 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import me.ghui.AMS.R;
+import me.ghui.AMS.net.NetUtils;
+import me.ghui.AMS.utils.Constants;
+import me.ghui.AMS.utils.Glog;
+import me.ghui.AMS.utils.PrefsUtils;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
 public class MainActivity extends BaseActivity {
     @Override
@@ -15,6 +21,30 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void init() {
+        getUserName();
+    }
+
+    private void getUserName() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                showProgressBar();
+                String refer = "http://211.84.112.49/lyit/sys/menu.aspx";
+                Document document = NetUtils.getDataFromServer(MainActivity.this,Constants.PSW_MOD_URL, refer);
+                if (document == null) {
+                    return;
+                }
+                Elements elements = document.select("input");
+                if (elements.size() < 2) {
+                    Glog.e("error..");
+                    return;
+                }
+                String userName = elements.get(1).attr("value");
+                Glog.e("userName: " + userName);
+                PrefsUtils.saveUserNameToSharedPrefs(MainActivity.this, userName);
+                dismissProgressBar();
+            }
+        }).start();
     }
 
     //onClickLisener........................................................................................................
@@ -27,6 +57,12 @@ public class MainActivity extends BaseActivity {
     public void gotoCourseActivity(View view) {
         Intent intent = new Intent(this, CourseActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e("ghui", "MainActivity onDestroy...");
     }
 
     public void gotoTeachingPlan(View view) {

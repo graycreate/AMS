@@ -8,9 +8,14 @@ public interface Constants {
     String PSW = "password";
     String LOGIN_DATA = "login_data_sharedpreference";
     String UNLOGIN = "";
+    String PREFS_USER_INFO = "pref_user_info";
+    String PREF_USER_NAME = "pref_user_name";
+    String PREF_USER_PSW = "pref_user_psw";
+    String PREF_USER_ID = "pref_user_id";
 
+
+    //below is url
     String VALIDATE_CODE_URL = "http://211.84.112.49/lyit/sys/ValidateCode.aspx";
-
     String LOGIN_URL = "http://211.84.112.49/lyit/_data/index_LOGIN.aspx";
     String TEACHER_INFO_URL = "http://211.84.112.49/lyit/jxzy/Tea_MyInfo_rpt.aspx";
     String TERM_INFO_URL = "http://211.84.112.49/lyit/znpk/Pri_TeacKCJXRW.aspx";
@@ -25,7 +30,5 @@ public interface Constants {
     String INPUT_GRADE_INFO_URL = "http://211.84.112.49/lyit/XSCJ/Tea_KCCJLR.aspx";
     String INPUT_GRADE_INFO_INDEX_URL = "http://211.84.112.49/lyit/XSCJ/Tea_KCCJLR_rpt.aspx";
     String INPUT_SCORE_URL = "http://211.84.112.49/lyit/XSCJ/KCCJ_ADD_rpt_T.aspx";
-    String PREFS_USER_INFO = "pref_user_info";
-    String PREF_USER_NAME = "pref_user_name";
-    String PREF_USER_PSW = "pref_user_psw";
+    String USER_INFO_FOOT_URL = "http://211.84.112.49/lyit/PUB/foot.aspx";
 }

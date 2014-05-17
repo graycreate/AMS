@@ -2,7 +2,9 @@ package me.ghui.AMS.utils;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Handler;
 import android.widget.Toast;
 import me.ghui.AMS.UI.Activity.SplashActivity;
@@ -51,4 +53,5 @@ public class MyApp extends Application {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         myApp.startActivity(intent);
     }
+
 }

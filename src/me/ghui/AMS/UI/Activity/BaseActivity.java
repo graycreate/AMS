@@ -15,6 +15,8 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 import me.ghui.AMS.utils.MyApp;
+import me.ghui.AMS.utils.PrefsUtils;
+import me.ghui.AMS.utils.Utils;
 
 /**
  * Created by ghui on 4/9/14.
@@ -31,7 +33,6 @@ public abstract class BaseActivity extends FragmentActivity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(getLayoutResourceId());
         initUI();
         init();
@@ -40,6 +41,12 @@ public abstract class BaseActivity extends FragmentActivity {
     }
 
     public abstract int getLayoutResourceId();
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Utils.setScreenOritention(this);
+    }
 
     public abstract void init();
 

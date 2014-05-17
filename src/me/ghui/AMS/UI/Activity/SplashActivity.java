@@ -173,7 +173,6 @@ public class SplashActivity extends BaseActivity {
                         }
                         //login success ,save the username and psw to sharepreferences
                         PrefsUtils.saveUserInfoToSharedPrefs(SplashActivity.this, user.getID(), user.getPassword());
-
                         logo.setVisibility(View.GONE);
                         startActivity(new Intent(SplashActivity.this, MainActivity.class));
                         overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);

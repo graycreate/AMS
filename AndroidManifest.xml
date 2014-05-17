@@ -16,6 +16,8 @@
             android:name=".utils.MyApp">
         <activity
                 android:name=".UI.Activity.SplashActivity"
+                android:configChanges="orientation|keyboardHidden"
+                android:screenOrientation="portrait"
                 android:theme="@style/Theme.Splash"
                 >
             <intent-filter>
@@ -25,45 +27,54 @@
         </activity>
         <activity
                 android:parentActivityName=".UI.Activity.MainActivity"
+                android:configChanges="orientation|keyboardHidden"
                 android:name=".UI.Activity.SelfInfoActivity"
                 android:icon="@drawable/personal_info_pressed"
                 android:label="@string/self_info">
         </activity>
         <activity
+                android:configChanges="orientation|keyboardHidden"
                 android:name=".UI.Activity.MainActivity"
                 android:label="@string/main_title">
         </activity>
         <activity
+                android:configChanges="orientation|keyboardHidden"
                 android:name=".UI.Activity.CourseActivity"
                 android:parentActivityName=".UI.Activity.MainActivity"
                 android:icon="@drawable/my_course_pressed"
                 android:label="承担课程"
                 />
         <activity
+                android:configChanges="orientation|keyboardHidden"
                 android:parentActivityName=".UI.Activity.MainActivity"
                 android:name=".UI.Activity.TeachingPlanActivity"
                 android:icon="@drawable/teach_plan_normal"
                 android:label="教学安排"/>
         <activity
+                android:configChanges="orientation|keyboardHidden"
                 android:parentActivityName=".UI.Activity.MainActivity"
                 android:name=".UI.Activity.GradesActivity"
                 android:icon="@drawable/search_score_normal"
                 android:label="查看成绩"/>
         <activity
+                android:configChanges="orientation|keyboardHidden"
                 android:parentActivityName=".UI.Activity.MainActivity"
                 android:name=".UI.Activity.InputGradesActivity"
                 android:icon="@drawable/inser_score_normal"
                 android:label="成绩录入"/>
         <activity
+                android:configChanges="orientation|keyboardHidden"
                 android:parentActivityName=".UI.Activity.MainActivity"
                 android:name=".UI.Activity.ModPswActivity"
                 android:icon="@drawable/modify_psw_pressed"
                 android:label="密码修改"/>
         <activity
+                android:configChanges="orientation|keyboardHidden"
                 android:name=".UI.Activity.NetWorkUnavailableDialog"
                 android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar"
                 />
         <activity
+                android:configChanges="orientation|keyboardHidden"
                 android:name=".UI.Activity.ScoreActivity"
                 android:launchMode="singleTop"
                 android:parentActivityName=".UI.Activity.GradesActivity"
@@ -77,19 +88,27 @@
                     android:resource="@xml/searchable"/>
         </activity>
         <activity android:name=".UI.Activity.ScoreStatsDialog"
+                  android:configChanges="orientation|keyboardHidden"
                   android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar"
                 />
         <activity android:name=".UI.Activity.InputScoreActivity"
                   android:label="成绩录入"
+                  android:configChanges="orientation|keyboardHidden"
                   android:icon="@drawable/inser_score_normal"
                   android:parentActivityName=".UI.Activity.GradesActivity"
                 />
         <activity android:name=".UI.Activity.InputScoreDialog"
+                  android:configChanges="orientation|keyboardHidden"
                   android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar"
                 />
         <activity android:name=".UI.Activity.SettingsActivity" android:label="@string/Settings"
+                  android:configChanges="orientation|keyboardHidden"
                   android:parentActivityName=".UI.Activity.GradesActivity"
                   android:icon="@drawable/settings_normal"/>
+        <activity android:name=".UI.Activity.AboutActivity" android:label="About"
+                  android:configChanges="orientation|keyboardHidden"
+                  android:parentActivityName=".UI.Activity.GradesActivity"
+                />
 
         <provider
                 android:authorities="me.ghui.ams.search.provider"
