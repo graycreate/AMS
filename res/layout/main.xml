@@ -35,7 +35,7 @@
                 android:text="@string/teaching_plan"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="right"
-                android:drawableTop="@drawable/teach_plan_normal"
+                android:drawableTop="@drawable/selecor_teach_plan"
                 />
     </RelativeLayout>
 
@@ -50,7 +50,7 @@
                 android:text="@string/view_score"
                 android:onClick="gotoGradesActivity"
                 android:layout_alignParentLeft="true"
-                android:drawableTop="@drawable/search_score_normal"
+                android:drawableTop="@drawable/selecor_search_score"
                 />
 
         <TextView
@@ -59,7 +59,7 @@
                 android:text="@string/input_score"
                 android:layout_centerHorizontal="true"
                 android:onClick="gotoInputGradesActivity"
-                android:drawableTop="@drawable/inser_score_normal"
+                android:drawableTop="@drawable/selecor_inser_score"
                 />
 
         <TextView

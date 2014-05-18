@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="me.ghui.AMS"
           android:versionCode="1"
-          android:versionName="1.0">
+          android:versionName="@string/version_name">
 
     <uses-sdk android:minSdkVersion="11"/>
 
@@ -48,19 +48,19 @@
                 android:configChanges="orientation|keyboardHidden"
                 android:parentActivityName=".UI.Activity.MainActivity"
                 android:name=".UI.Activity.TeachingPlanActivity"
-                android:icon="@drawable/teach_plan_normal"
+                android:icon="@drawable/teach_plan_pressed"
                 android:label="教学安排"/>
         <activity
                 android:configChanges="orientation|keyboardHidden"
                 android:parentActivityName=".UI.Activity.MainActivity"
                 android:name=".UI.Activity.GradesActivity"
-                android:icon="@drawable/search_score_normal"
+                android:icon="@drawable/search_score_pressed"
                 android:label="查看成绩"/>
         <activity
                 android:configChanges="orientation|keyboardHidden"
                 android:parentActivityName=".UI.Activity.MainActivity"
                 android:name=".UI.Activity.InputGradesActivity"
-                android:icon="@drawable/inser_score_normal"
+                android:icon="@drawable/inser_score_pressed"
                 android:label="成绩录入"/>
         <activity
                 android:configChanges="orientation|keyboardHidden"
@@ -94,7 +94,7 @@
         <activity android:name=".UI.Activity.InputScoreActivity"
                   android:label="成绩录入"
                   android:configChanges="orientation|keyboardHidden"
-                  android:icon="@drawable/inser_score_normal"
+                  android:icon="@drawable/inser_score_pressed"
                   android:parentActivityName=".UI.Activity.GradesActivity"
                 />
         <activity android:name=".UI.Activity.InputScoreDialog"
