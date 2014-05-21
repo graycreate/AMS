@@ -16,6 +16,9 @@ public class PrefsUtils {
         return PreferenceManager.getDefaultSharedPreferences(context).getString("pref_screen_oritentation", "0");
     }
 
+    public static boolean isKeepAlive(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean("pref_keep_alive", false);
+    }
     public static boolean isAutoSavePsw(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context).getBoolean("pref_auto_psw", true);
     }

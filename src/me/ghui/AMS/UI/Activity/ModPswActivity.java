@@ -43,7 +43,7 @@ public class ModPswActivity extends BaseActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                String refer = "http://211.84.112.49/lyit/sys/menu.aspx";
+                String refer = "http://211.84.112.48/lyit/sys/menu.aspx";
                 Document document = NetUtils.getDataFromServer(ModPswActivity.this,Constants.PSW_MOD_URL, refer);
                 if (document == null) {
                     return;

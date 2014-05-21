@@ -39,6 +39,9 @@ public class MyApp extends Application {
     }
 
     public void exit() {
+        //1. stop service
+        stopService(new Intent(getApplicationContext(), KeepAliveService.class));
+        //2. close activities
         for (Activity activity : list) {
             if (activity != null) {
                 activity.finish();

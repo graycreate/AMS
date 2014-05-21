@@ -80,6 +80,14 @@ public class SettingsFragment extends PreferenceFragment {
                 return true;
             }
         });
+        //4, startservice to keep alive
+//        findPreference("pref_keep_alive").setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+//            @Override
+//            publicrboolean onPreferenceChange(Preference preference, Object newValue) {
+//                Glog.e("preference changed...newValue: " + newValue);
+//                return false;
+//            }
+//        });
 
     }
 }

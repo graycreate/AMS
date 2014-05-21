@@ -27,7 +27,7 @@ public class InputScoreDialog extends BaseActivity {
 
     TextView name_tv, id_tv, input_status_tv;
 
-    String refer = "http://211.84.112.49/lyit/XSCJ/KCCJ_ADD_rpt_T.aspx";
+    String refer = "http://211.84.112.48/lyit/XSCJ/KCCJ_ADD_rpt_T.aspx";
     String student_id;
     String input_status;
     Elements es;
@@ -226,7 +226,7 @@ public class InputScoreDialog extends BaseActivity {
                 datas.put("CHKZHCJ1", score5_et.getText().toString());
                 datas.put("sel_QMTSQK1", values[remark_spinner.getSelectedItemPosition()]);
                 Log.e("ghui", "datas: " + datas);
-                Document doc = NetUtils.postDataToServer(InputScoreDialog.this, "http://211.84.112.49/lyit/XSCJ/KCCJ_ADD_rpt_T.aspx?f=ok", datas, refer);
+                Document doc = NetUtils.postDataToServer(InputScoreDialog.this, "http://211.84.112.48/lyit/XSCJ/KCCJ_ADD_rpt_T.aspx?f=ok", datas, refer);
                 Log.e("ghui", "insert doc: " + doc);
                 final String response;
                 final String status;

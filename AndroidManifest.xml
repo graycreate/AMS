@@ -113,5 +113,6 @@
         <provider
                 android:authorities="me.ghui.ams.search.provider"
                 android:name=".DAO.SearchContentProvider"/>
+        <service android:name=".utils.KeepAliveService"/>
     </application>
 </manifest>
