@@ -65,7 +65,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void run() {
                 showProgressBar();
-                String refer = "http://211.84.112.48/lyit/sys/menu.aspx";
+                String refer = Constants.BASE_URL + "/lyit/sys/menu.aspx";
                 Document document = NetUtils.getDataFromServer(MainActivity.this, Constants.PSW_MOD_URL, refer);
                 if (document == null) {
                     return;

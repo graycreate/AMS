@@ -71,19 +71,19 @@ public class User {
 //    pairs.add(new BasicNameValuePair("Sel_Type", "TEA"));
 //    pairs.add(new BasicNameValuePair("typeName", "教师教辅人员"));
 
-    public boolean login(Context context) {
-        HashMap<String, String> data = new HashMap<String, String>();
-        data.put("UserID", getID());
-        data.put("PassWord", getPassword());
-        data.put("cCode", getValidateCode());
-        data.put("Sel_Type","TEA");
-        data.put("typeName","教师教辅人员");
-        Log.e("ghui", "id: " + getID());
-        Log.e("ghui", "psw: " + getPassword());
-        Log.e("ghui", "cCode: " + getValidateCode());
-        Log.e("ghui", "Sel_Type: " + data.get("typeName"));
-        Document doc = NetUtils.postDataToServer(context,Constants.LOGIN_URL, data, "http://211.84.112.48/lyit/_data/index_LOGIN.aspx");
-//        Log.e("ghui", "doc: " + doc.text());
-        return NetUtils.isConnectioned(doc);
-    }
+//    public boolean login(Context context) {
+//        HashMap<String, String> data = new HashMap<String, String>();
+//        data.put("UserID", getID());
+//        data.put("PassWord", getPassword());
+//        data.put("cCode", getValidateCode());
+//        data.put("Sel_Type","TEA");
+//        data.put("typeName","教师教辅人员");
+//        Log.e("ghui", "id: " + getID());
+//        Log.e("ghui", "psw: " + getPassword());
+//        Log.e("ghui", "cCode: " + getValidateCode());
+//        Log.e("ghui", "Sel_Type: " + data.get("typeName"));
+//        Document doc = NetUtils.postDataToServer(context,Constants.LOGIN_URL, data, Constants.LOGIN_URL);
+////        Log.e("ghui", "doc: " + doc.text());
+//        return NetUtils.isConnectioned(doc);
+//    }
 }

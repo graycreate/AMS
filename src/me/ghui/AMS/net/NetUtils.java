@@ -45,7 +45,7 @@ public class NetUtils {
         DefaultHttpClient httpClient = new DefaultHttpClient();
         HttpGet httpGet = new HttpGet(Constants.VALIDATE_CODE_URL);
         try {
-            httpGet.setHeader("Referer", "http://211.84.112.48/lyit/_data/index_LOGIN.aspx");
+            httpGet.setHeader("Referer", Constants.LOGIN_URL);
             HttpResponse response = httpClient.execute(httpGet);
             if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                 SESSION_ID = httpClient.getCookieStore().getCookies().get(0).getValue();
@@ -81,7 +81,7 @@ public class NetUtils {
 //                httpPost.setHeader("Content-Type","application/x-www-form-urlencoded");
 //                httpPost.setHeader("Host","211.84.112.49");
 //               httpPost.setHeader("Origin","211.84.112.49");
-        httpPost.setHeader("Referer", "http://211.84.112.48/lyit/_data/index_LOGIN.aspx");
+        httpPost.setHeader("Referer",Constants.LOGIN_URL);
 //                httpPost.setHeader("User-Agent","Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36");
 //                httpPost.setHeader("Cache-Control","max-age=0");
 //                httpPost.getParams().setParameter(ClientPNames.HANDLE_REDIRECTS, false);

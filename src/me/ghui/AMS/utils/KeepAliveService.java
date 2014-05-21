@@ -50,7 +50,7 @@ public class KeepAliveService extends Service {
             @Override
             public void run() {
                //todo
-                String refer = "http://211.84.112.48/lyit/sys/menu.aspx";
+                String refer = Constants.BASE_URL + "/lyit/sys/menu.aspx";
                 NetUtils.getDataFromServer(KeepAliveService.this,Constants.PSW_MOD_URL, refer);
                 Glog.e("keepAlive...");
             }
